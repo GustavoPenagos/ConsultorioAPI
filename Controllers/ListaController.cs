@@ -2,34 +2,118 @@
 using System.Data;
 using Microsoft.Data.SqlClient;
 using Newtonsoft.Json;
+using ConsultorioAPI.Data;
 
 namespace ConsultorioAPI.Controllers
 {    
     [ApiController]
     public class ListaController : ControllerBase
     {
-        public IConfiguration Configuration { get; }
-        public ListaController(IConfiguration configuration)
+        public consultorioDBContext _context;
+        public ListaController(consultorioDBContext context)
         {
-            Configuration = configuration;
+            _context = context;
         }
 
         [HttpGet]
         [Route("/api/lista/pacientes")]
         public dynamic ListaPacientes()
         {
-            var con = Configuration.GetConnectionString("OdontologiaDB");
+            
             try
             {
-                string query = "SELECT * FROM Usuario";
-                using (SqlConnection connection = new SqlConnection(con))
-                {
-                    connection.Open();
-                    SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
-                    DataTable data = new DataTable();
-                    adapter.Fill(data);
-                    return  JsonConvert.SerializeObject(data);
-                }
+                return _context.Usuario.ToList();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpGet]
+        [Route("/api/lista/conveccion")]
+        public dynamic ListaConvecciones()
+        {
+            
+            try
+            {
+                return _context.Convecciones.ToList();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpGet]
+        [Route("/api/lista/estadocivil")]
+        public dynamic ListaEstadoCivil()
+        {
+
+            try
+            {
+                return _context.EstadoCivil.ToList();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpGet]
+        [Route("/api/lista/tiposdecumentos")]
+        public dynamic ListaTiposDocumentos()
+        {
+
+            try
+            {
+                return _context.TipoDocumento.ToList();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpGet]
+        [Route("/api/lista/ciudad")]
+        public dynamic ListaCiudad()
+        {
+
+            try
+            {
+                return _context.Ciudad.ToList();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpGet]
+        [Route("/api/lista/departamento")]
+        public dynamic ListaDepartamento()
+        {
+
+            try
+            {
+
+                return _context.Departamento.ToList();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpGet]
+        [Route("/api/lista/genero")]
+        public dynamic ListaGenero()
+        {
+
+            try
+            {
+                return _context.Genero.ToList();
             }
             catch (Exception ex)
             {

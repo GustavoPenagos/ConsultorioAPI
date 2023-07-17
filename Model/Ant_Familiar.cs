@@ -7,9 +7,9 @@ using System.Web;
 
 namespace OdontologiaWeb.Models
 {
+    [Keyless]
     public class Ant_Familiar
     {
-        [Key]
         public string Id_Usuario { get; set; }
         public int Cancer { get; set; }
         public int Sinusitis { get; set; }
@@ -33,5 +33,6 @@ namespace OdontologiaWeb.Models
         public int Fre_Cepillado { get; set; }
         public int Ceda_Dental { get; set; }
         public string? Observaciones { get; set; }
+        public DateTime Atencion { get; set; }
     }
 }

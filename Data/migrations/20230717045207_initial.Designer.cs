@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ConsultorioAPI.data.migrations
 {
     [DbContext(typeof(consultorioDBContext))]
-    [Migration("20230715221617_initial")]
+    [Migration("20230717045207_initial")]
     partial class initial
     {
         /// <inheritdoc />
@@ -57,29 +57,73 @@ namespace ConsultorioAPI.data.migrations
                     b.ToTable("EstadoCivil");
                 });
 
+            modelBuilder.Entity("ConsultorioAPI.Model.EstadoTratamiento", b =>
+                {
+                    b.Property<string>("Diente")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Doctor")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("Fecha")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Firma")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Id_Usuario")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Trata_Efectuado")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.ToTable("EstadoTratamiento");
+                });
+
+            modelBuilder.Entity("ConsultorioAPI.Model.PlanTratamiento", b =>
+                {
+                    b.Property<DateTime>("Atencion")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Diagnostico")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Id_Usuario")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Pronostico")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Tratamiento")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.ToTable("PlanTratamiento");
+                });
+
             modelBuilder.Entity("OdontologiaWeb.Models.Anamnesis", b =>
                 {
-                    b.Property<string>("Id_Usuario")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<DateTime>("Atencion")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Emf_Actual")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Motivo_Consulta")
+                    b.Property<string>("Id_Usuario")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id_Usuario");
+                    b.Property<string>("Motivo_Consulta")
+                        .HasColumnType("nvarchar(max)");
 
                     b.ToTable("Anamnesis");
                 });
 
             modelBuilder.Entity("OdontologiaWeb.Models.Ant_Familiar", b =>
                 {
-                    b.Property<string>("Id_Usuario")
-                        .HasColumnType("nvarchar(450)");
-
                     b.Property<int>("Alt_Coagulatorias")
                         .HasColumnType("int");
+
+                    b.Property<DateTime>("Atencion")
+                        .HasColumnType("datetime2");
 
                     b.Property<int>("Cancer")
                         .HasColumnType("int");
@@ -110,6 +154,10 @@ namespace ConsultorioAPI.data.migrations
 
                     b.Property<int>("Hipertension")
                         .HasColumnType("int");
+
+                    b.Property<string>("Id_Usuario")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Infecciones")
                         .HasColumnType("int");
@@ -143,8 +191,6 @@ namespace ConsultorioAPI.data.migrations
 
                     b.Property<int>("Trata_Medico")
                         .HasColumnType("int");
-
-                    b.HasKey("Id_Usuario");
 
                     b.ToTable("Ant_Familiar");
                 });
@@ -189,6 +235,9 @@ namespace ConsultorioAPI.data.migrations
 
             modelBuilder.Entity("OdontologiaWeb.Models.Estomatologico", b =>
                 {
+                    b.Property<DateTime>("Atencion")
+                        .HasColumnType("datetime2");
+
                     b.Property<int>("Carrillos")
                         .HasColumnType("int");
 
@@ -274,8 +323,10 @@ namespace ConsultorioAPI.data.migrations
                     b.Property<string>("Aseguradora")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<DateTime>("Atencion")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("Direccion")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Edad")

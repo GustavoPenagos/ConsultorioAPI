@@ -18,6 +18,8 @@ namespace ConsultorioAPI.Data
         public DbSet<Genero> Genero { get; set; }
         public DbSet<Convecciones> Convecciones { get; set; }
         public DbSet<EstadoCivil> EstadoCivil { get; set; }
+        public DbSet<PlanTratamiento> PlanTratamiento { get;set; }
+        public DbSet<EstadoTratamiento> EstadoTratamiento { get; set; }
 
     }
 }

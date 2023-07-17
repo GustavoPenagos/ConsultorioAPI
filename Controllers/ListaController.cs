@@ -37,7 +37,8 @@ namespace ConsultorioAPI.Controllers
             
             try
             {
-                return _context.Convecciones.ToList();
+                var a = _context.Convecciones.ToList();
+                return a;
             }
             catch (Exception ex)
             {
@@ -114,6 +115,21 @@ namespace ConsultorioAPI.Controllers
             try
             {
                 return _context.Genero.ToList();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpGet]
+        [Route("/api/lista/estadotratamiento")]
+        public dynamic ListaTratamiento()
+        {
+
+            try
+            {
+                return _context.EstadoTratamiento.ToList();
             }
             catch (Exception ex)
             {

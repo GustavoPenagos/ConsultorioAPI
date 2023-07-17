@@ -41,7 +41,8 @@ namespace ConsultorioAPI.Controllers
                     Oficina = usuario.Oficina,
                     Nombre_Acudiente=usuario.Nombre_Acudiente,
                     Referido = usuario.Referido,
-                    Observaciones = usuario.Observaciones
+                    Observaciones = usuario.Observaciones,
+                    Atencion = usuario.Atencion
                 };
                 _context.Usuario.Add(insert);
                 _context.SaveChanges();

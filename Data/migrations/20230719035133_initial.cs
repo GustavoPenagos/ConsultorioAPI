@@ -15,20 +15,25 @@ namespace ConsultorioAPI.data.migrations
                 name: "Anamnesis",
                 columns: table => new
                 {
-                    Id_Usuario = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id_Usuario = table.Column<long>(type: "bigint", nullable: false),
                     Motivo_Consulta = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Emf_Actual = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Atencion = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
+                    table.PrimaryKey("PK_Anamnesis", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Ant_Familiar",
                 columns: table => new
                 {
-                    Id_Usuario = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id_Usuario = table.Column<long>(type: "bigint", nullable: false),
                     Cancer = table.Column<int>(type: "int", nullable: false),
                     Sinusitis = table.Column<int>(type: "int", nullable: false),
                     Organos_Sentidos = table.Column<int>(type: "int", nullable: false),
@@ -55,14 +60,14 @@ namespace ConsultorioAPI.data.migrations
                 },
                 constraints: table =>
                 {
+                    table.PrimaryKey("PK_Ant_Familiar", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Ciudad",
                 columns: table => new
                 {
-                    Id_Ciudad = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id_Ciudad = table.Column<int>(type: "int", nullable: false),
                     Municipio = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Estado = table.Column<int>(type: "int", nullable: false),
                     Id_Departamento = table.Column<int>(type: "int", nullable: false)
@@ -89,8 +94,7 @@ namespace ConsultorioAPI.data.migrations
                 name: "Departamento",
                 columns: table => new
                 {
-                    Id_Departamento = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id_Departamento = table.Column<int>(type: "int", nullable: false),
                     NombreDepartamento = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
@@ -115,22 +119,28 @@ namespace ConsultorioAPI.data.migrations
                 name: "EstadoTratamiento",
                 columns: table => new
                 {
-                    Id_Usuario = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id_Usuario = table.Column<long>(type: "bigint", nullable: false),
                     Fecha = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Diente = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Trata_Efectuado = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Doctor = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Firma = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Firma = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Atencion = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
+                    table.PrimaryKey("PK_EstadoTratamiento", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Estomatologico",
                 columns: table => new
                 {
-                    Id_Usuario = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id_Usuario = table.Column<long>(type: "bigint", nullable: false),
                     Labios = table.Column<int>(type: "int", nullable: false),
                     Encias = table.Column<int>(type: "int", nullable: false),
                     Paladar = table.Column<int>(type: "int", nullable: false),
@@ -146,6 +156,7 @@ namespace ConsultorioAPI.data.migrations
                 },
                 constraints: table =>
                 {
+                    table.PrimaryKey("PK_Estomatologico", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -165,7 +176,9 @@ namespace ConsultorioAPI.data.migrations
                 name: "PlanTratamiento",
                 columns: table => new
                 {
-                    Id_Usuario = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id_Usuario = table.Column<long>(type: "bigint", nullable: false),
                     Diagnostico = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Pronostico = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Tratamiento = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -173,6 +186,7 @@ namespace ConsultorioAPI.data.migrations
                 },
                 constraints: table =>
                 {
+                    table.PrimaryKey("PK_PlanTratamiento", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -192,7 +206,7 @@ namespace ConsultorioAPI.data.migrations
                 name: "Usuario",
                 columns: table => new
                 {
-                    Id_Usuario = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Id_Usuario = table.Column<long>(type: "bigint", nullable: false),
                     Id_Documento = table.Column<int>(type: "int", nullable: false),
                     Nombre = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Apellido = table.Column<string>(type: "nvarchar(max)", nullable: true),

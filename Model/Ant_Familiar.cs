@@ -7,10 +7,12 @@ using System.Web;
 
 namespace OdontologiaWeb.Models
 {
-    [Keyless]
     public class Ant_Familiar
     {
-        public string Id_Usuario { get; set; }
+        [Key]
+        public int Id { get; set; }
+        [Required]
+        public long Id_Usuario { get; set; }
         public int Cancer { get; set; }
         public int Sinusitis { get; set; }
         public int Organos_Sentidos { get; set; }

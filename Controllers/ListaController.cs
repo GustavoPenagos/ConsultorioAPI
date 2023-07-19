@@ -34,11 +34,9 @@ namespace ConsultorioAPI.Controllers
         [Route("/api/lista/conveccion")]
         public dynamic ListaConvecciones()
         {
-            
             try
             {
-                var a = _context.Convecciones.ToList();
-                return a;
+                return _context.Convecciones.ToList();
             }
             catch (Exception ex)
             {

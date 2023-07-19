@@ -1,15 +1,18 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
 namespace OdontologiaWeb.Models
 {
-    [Keyless]
     public class Estomatologico
     {
-        public string Id_Usuario { get; set; }
+        [Key]
+        public int Id { get; set; }
+        [Required]
+        public long Id_Usuario { get; set; }
         public int Labios { get; set; }
         public int Encias { get; set; }
         public int Paladar { get; set; }

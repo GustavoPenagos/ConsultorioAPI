@@ -64,6 +64,86 @@ namespace ConsultorioAPI.data.migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "cartaDentalAdulto",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id_Usuario = table.Column<long>(type: "bigint", nullable: false),
+                    c11 = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    c12 = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    c13 = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    c14 = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    c15 = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    c16 = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    c17 = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    c18 = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    c21 = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    c22 = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    c23 = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    c24 = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    c25 = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    c26 = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    c27 = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    c28 = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    c31 = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    c32 = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    c33 = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    c34 = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    c35 = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    c36 = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    c37 = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    c38 = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    c41 = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    c42 = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    c43 = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    c44 = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    c45 = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    c46 = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    c47 = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    c48 = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Atencion = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_cartaDentalAdulto", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "cartaDentalNino",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id_Usuario = table.Column<long>(type: "bigint", nullable: false),
+                    c51 = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    c52 = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    c53 = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    c54 = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    c55 = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    c61 = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    c62 = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    c63 = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    c64 = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    c65 = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    c71 = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    c72 = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    c73 = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    c74 = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    c75 = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    c81 = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    c82 = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    c83 = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    c84 = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    c85 = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Atencion = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_cartaDentalNino", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Ciudad",
                 columns: table => new
                 {
@@ -240,6 +320,12 @@ namespace ConsultorioAPI.data.migrations
 
             migrationBuilder.DropTable(
                 name: "Ant_Familiar");
+
+            migrationBuilder.DropTable(
+                name: "cartaDentalAdulto");
+
+            migrationBuilder.DropTable(
+                name: "cartaDentalNino");
 
             migrationBuilder.DropTable(
                 name: "Ciudad");

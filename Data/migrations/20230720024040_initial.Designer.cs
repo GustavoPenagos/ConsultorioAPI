@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ConsultorioAPI.data.migrations
 {
     [DbContext(typeof(consultorioDBContext))]
-    [Migration("20230719035133_initial")]
+    [Migration("20230720024040_initial")]
     partial class initial
     {
         /// <inheritdoc />
@@ -24,6 +24,201 @@ namespace ConsultorioAPI.data.migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("ConsultorioAPI.Model.CartaDentalAdulto", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("Atencion")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long>("Id_Usuario")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("c11")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("c12")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("c13")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("c14")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("c15")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("c16")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("c17")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("c18")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("c21")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("c22")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("c23")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("c24")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("c25")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("c26")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("c27")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("c28")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("c31")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("c32")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("c33")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("c34")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("c35")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("c36")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("c37")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("c38")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("c41")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("c42")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("c43")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("c44")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("c45")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("c46")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("c47")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("c48")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("cartaDentalAdulto");
+                });
+
+            modelBuilder.Entity("ConsultorioAPI.Model.CartaDentalNino", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("Atencion")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long>("Id_Usuario")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("c51")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("c52")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("c53")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("c54")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("c55")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("c61")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("c62")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("c63")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("c64")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("c65")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("c71")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("c72")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("c73")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("c74")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("c75")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("c81")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("c82")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("c83")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("c84")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("c85")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("cartaDentalNino");
+                });
 
             modelBuilder.Entity("ConsultorioAPI.Model.Convecciones", b =>
                 {

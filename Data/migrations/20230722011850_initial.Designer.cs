@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ConsultorioAPI.data.migrations
 {
     [DbContext(typeof(consultorioDBContext))]
-    [Migration("20230720024040_initial")]
+    [Migration("20230722011850_initial")]
     partial class initial
     {
         /// <inheritdoc />
@@ -218,6 +218,28 @@ namespace ConsultorioAPI.data.migrations
                     b.HasKey("Id");
 
                     b.ToTable("cartaDentalNino");
+                });
+
+            modelBuilder.Entity("ConsultorioAPI.Model.Citas", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("FechaCita")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("HoraCita")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long>("Id_Usuario")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Citas");
                 });
 
             modelBuilder.Entity("ConsultorioAPI.Model.Convecciones", b =>

@@ -217,6 +217,28 @@ namespace ConsultorioAPI.data.migrations
                     b.ToTable("cartaDentalNino");
                 });
 
+            modelBuilder.Entity("ConsultorioAPI.Model.Citas", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("FechaCita")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("HoraCita")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long>("Id_Usuario")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Citas");
+                });
+
             modelBuilder.Entity("ConsultorioAPI.Model.Convecciones", b =>
                 {
                     b.Property<int>("Id")

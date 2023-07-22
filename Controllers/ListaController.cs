@@ -3,6 +3,9 @@ using System.Data;
 using Microsoft.Data.SqlClient;
 using Newtonsoft.Json;
 using ConsultorioAPI.Data;
+using OdontologiaWeb.Models;
+using Microsoft.EntityFrameworkCore;
+using ConsultorioAPI.Model;
 
 namespace ConsultorioAPI.Controllers
 {    
@@ -19,10 +22,29 @@ namespace ConsultorioAPI.Controllers
         [Route("/api/lista/pacientes")]
         public dynamic ListaPacientes()
         {
-            
             try
             {
-                return _context.Usuario.ToList();
+                return from Usuario in _context.Usuario
+                            join TipoDocumento in _context.TipoDocumento on Usuario.Id_Documento equals TipoDocumento.Id_Documento
+                            join EstadoCivil in _context.EstadoCivil on Usuario.Estado_Civil equals EstadoCivil.Id
+                            join Genero in _context.Genero on Usuario.Id_Genero equals Genero.Id_Genero
+                            join Ciudad in _context.Ciudad on Usuario.Id_Ciudad equals Ciudad.Id_Ciudad
+                            join Departamento in _context.Departamento on Usuario.Id_Departamento equals Departamento.Id_Departamento
+                            select new
+                            {
+                                Usuario.Id_Usuario,
+                                tipodocumento = TipoDocumento.Documento,
+                                Usuario.Nombre,
+                                Usuario.Apellido,
+                                Usuario.Edad,
+                                Usuario.Fecha_Nacido,
+                                EstadoCivil= EstadoCivil.CivilNo,
+                                Usuario.Ocupacion,
+                                Genero = Genero.Sexo,
+                                Ciudad.Municipio,
+                                departamento = Departamento.NombreDepartamento
+
+                            };
             }
             catch (Exception ex)
             {
@@ -134,5 +156,7 @@ namespace ConsultorioAPI.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
+
     }
 }

@@ -144,6 +144,21 @@ namespace ConsultorioAPI.data.migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Citas",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id_Usuario = table.Column<long>(type: "bigint", nullable: false),
+                    FechaCita = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    HoraCita = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Citas", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Ciudad",
                 columns: table => new
                 {
@@ -326,6 +341,9 @@ namespace ConsultorioAPI.data.migrations
 
             migrationBuilder.DropTable(
                 name: "cartaDentalNino");
+
+            migrationBuilder.DropTable(
+                name: "Citas");
 
             migrationBuilder.DropTable(
                 name: "Ciudad");

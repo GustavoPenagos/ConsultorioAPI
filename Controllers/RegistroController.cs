@@ -19,7 +19,6 @@ namespace ConsultorioAPI.Controllers
             _context = context;
         }
 
-
         [HttpPost]
         [Route("/registro/usuario")]
         public dynamic RegistroUsuario(Usuario usuario)
@@ -156,6 +155,28 @@ namespace ConsultorioAPI.Controllers
                 _context.SaveChanges();
                 return Ok();
 
+            }catch(Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpPost]
+        [Route("/registro/citas")]
+        public dynamic RegistroCitas(Citas citas)
+        {
+            try
+            {
+                Citas cita = new Citas
+                {
+                    Id_Usuario = citas.Id_Usuario,
+                    FechaCita = citas.FechaCita,
+                    HoraCita = citas.HoraCita
+                };
+                
+                _context.Citas.Add(cita);
+                _context.SaveChanges();
+                return Ok();
             }catch(Exception ex)
             {
                 return BadRequest(ex.Message);

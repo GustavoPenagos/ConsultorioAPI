@@ -7,6 +7,8 @@ using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.EntityFrameworkCore.Migrations.Operations;
 using OdontologiaWeb.Models;
 using System.Diagnostics.Tracing;
+using ConsultorioAPI.Controllers;
+using System.Runtime.CompilerServices;
 
 namespace ConsultorioAPI.Controllers
 {
@@ -163,20 +165,32 @@ namespace ConsultorioAPI.Controllers
 
         [HttpPost]
         [Route("/registro/citas")]
-        public dynamic RegistroCitas(Citas citas)
+        public async Task<dynamic> RegistroCitas(Citas citas)
         {
             try
             {
-                Citas cita = new Citas
+                var persona = _context.Citas.Where(x => x.Id_Usuario == citas.Id_Usuario).FirstOrDefault();
+                if (persona != null)
                 {
-                    Id_Usuario = citas.Id_Usuario,
-                    FechaCita = citas.FechaCita,
-                    HoraCita = citas.HoraCita
-                };
-                
-                _context.Citas.Add(cita);
-                _context.SaveChanges();
-                return Ok();
+                    persona.FechaCita = citas.FechaCita;
+                    persona.HoraCita = citas.HoraCita;
+                    _context.SaveChanges();
+                    return Ok();
+                }
+                else
+                {
+                    Citas cita = new Citas
+                    {
+                        Id_Usuario = citas.Id_Usuario,
+                        FechaCita = citas.FechaCita,
+                        HoraCita = citas.HoraCita
+                    };
+
+                    _context.Citas.Update(cita);
+                    _context.SaveChanges();
+                    return Ok();
+                }
+               
             }catch(Exception ex)
             {
                 return BadRequest(ex.Message);

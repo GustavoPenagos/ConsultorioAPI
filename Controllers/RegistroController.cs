@@ -22,7 +22,7 @@ namespace ConsultorioAPI.Controllers
         }
 
         [HttpPost]
-        [Route("/registro/usuario")]
+        [Route("/api/registro/usuario")]
         public dynamic RegistroUsuario(Usuario usuario)
         {
             try
@@ -40,7 +40,7 @@ namespace ConsultorioAPI.Controllers
         }
 
         [HttpPost]
-        [Route("/registro/anamnesis")]
+        [Route("/api/registro/anamnesis")]
         public dynamic RegistroAnamnesis(Anamnesis anamnesis)
         {
             try
@@ -57,7 +57,7 @@ namespace ConsultorioAPI.Controllers
         }
 
         [HttpPost]
-        [Route("/registro/familiar")]
+        [Route("/api/registro/familiar")]
         public dynamic RegistroFamiliar(Ant_Familiar familiar)
         {
             try
@@ -75,7 +75,7 @@ namespace ConsultorioAPI.Controllers
         }
 
         [HttpPost]
-        [Route("/registro/estomatologico")]
+        [Route("/api/registro/estomatologico")]
         public dynamic RegistroEstomatologico(Estomatologico estomatologico)
         {
             try
@@ -92,7 +92,7 @@ namespace ConsultorioAPI.Controllers
         }
 
         [HttpPost]
-        [Route("/registro/plantratamiento")]
+        [Route("/api/registro/plantratamiento")]
         public dynamic RegistroTratamiento(PlanTratamiento tratamiento)
         {
             try
@@ -110,7 +110,7 @@ namespace ConsultorioAPI.Controllers
         }
 
         [HttpPost]
-        [Route("/registro/estadotratamiento")]
+        [Route("/api/registro/estadotratamiento")]
         public dynamic RegistroEstadoTratamiento(EstadoTratamiento estado)
         {
             try
@@ -128,7 +128,7 @@ namespace ConsultorioAPI.Controllers
         }
 
         [HttpPost]
-        [Route("/registro/dentaladulto")]
+        [Route("/api/registro/dentaladulto")]
         public dynamic RegistroCartaDentalAdulto(CartaDentalAdulto dentalAdulto)
         {
             try
@@ -146,7 +146,7 @@ namespace ConsultorioAPI.Controllers
         }
 
         [HttpPost]
-        [Route("/registro/dentalnino")]
+        [Route("/api/registro/dentalnino")]
         public dynamic RegistroCartaDentalNino(CartaDentalNino dentalNino)
         {
             try
@@ -164,7 +164,7 @@ namespace ConsultorioAPI.Controllers
         }
 
         [HttpPost]
-        [Route("/registro/citas")]
+        [Route("/api/registro/citas")]
         public async Task<dynamic> RegistroCitas(Citas citas)
         {
             try

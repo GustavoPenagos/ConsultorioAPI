@@ -1,6 +1,7 @@
 ﻿using ConsultorioAPI.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using OdontologiaWeb.Models;
 
 namespace ConsultorioAPI.Controllers
 {
@@ -102,6 +103,69 @@ namespace ConsultorioAPI.Controllers
             }catch(Exception ex)
             {
                 return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpPost]
+        [Route("/apieditar/usuario")]
+        public dynamic Editarusuario(Usuario usuario)
+        {
+            try
+            {
+
+
+                return Ok();
+            }catch(Exception ex)
+            {
+                return BadRequest(ex.Message + Environment.NewLine + ex.StackTrace);
+            }
+        }
+
+        [HttpPost]
+        [Route("/apieditar/anamnesis")]
+        public dynamic EditarAnamnesis(Anamnesis anamnesis)
+        {
+            try
+            {
+
+
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message + Environment.NewLine + ex.StackTrace);
+            }
+        }
+
+        [HttpPost]
+        [Route("/apieditar/familiar")]
+        public dynamic EditarFamiliar(Ant_Familiar familiar)
+        {
+            try
+            {
+
+
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message + Environment.NewLine + ex.StackTrace);
+            }
+        }
+
+        [HttpPost]
+        [Route("/apieditar/estomatologico")]
+        public dynamic EditarEstomatologico(Estomatologico estomatologico)
+        {
+            try
+            {
+
+
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message + Environment.NewLine + ex.StackTrace);
             }
         }
     }

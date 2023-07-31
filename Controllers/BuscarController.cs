@@ -2,6 +2,7 @@
 using ConsultorioAPI.Model;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using OdontologiaWeb.Models;
 
 namespace ConsultorioAPI.Controllers
@@ -22,32 +23,43 @@ namespace ConsultorioAPI.Controllers
         /// <returns></returns>
         [HttpGet]
         [Route("/api/buscar/usuario")]
-        public dynamic BuscarUsuario(long id)
+        public dynamic BuscarUsuario(long id, string? fuente=null)
         {
             try
             {
-                return from Usuario in _context.Usuario
-                       join TipoDocumento in _context.TipoDocumento on Usuario.Id_Documento equals TipoDocumento.Id_Documento
-                       join EstadoCivil in _context.EstadoCivil on Usuario.Estado_Civil equals EstadoCivil.Id
-                       join Genero in _context.Genero on Usuario.Id_Genero equals Genero.Id_Genero
-                       join Ciudad in _context.Ciudad on Usuario.Id_Ciudad equals Ciudad.Id_Ciudad
-                       join Departamento in _context.Departamento on Usuario.Id_Departamento equals Departamento.Id_Departamento
-                       where Usuario.Id_Usuario == id
-                       select new
-                       {
-                           Usuario.Id_Usuario,
-                           tipodocumento = TipoDocumento.Documento,
-                           Usuario.Nombre,
-                           Usuario.Apellido,
-                           Usuario.Edad,
-                           Usuario.Fecha_Nacido,
-                           EstadoCivil = EstadoCivil.CivilNo,
-                           Usuario.Ocupacion,
-                           Genero = Genero.Sexo,
-                           Ciudad.Municipio,
-                           departamento = Departamento.NombreDepartamento
+                switch (fuente)
+                {
+                    case "registro":
+                        DateTime fecha = _context.Usuario.Where(i => i.Id_Usuario == id).Select(i => i.Fecha_Nacido).FirstOrDefault();
+                        var dias = DateTime.Now - fecha;
+                        var anios = dias.Days /365;
+                        return anios;
 
-                       };
+                    default:
+                        return from Usuario in _context.Usuario
+                               join TipoDocumento in _context.TipoDocumento on Usuario.Id_Documento equals TipoDocumento.Id_Documento
+                               join EstadoCivil in _context.EstadoCivil on Usuario.Estado_Civil equals EstadoCivil.Id
+                               join Genero in _context.Genero on Usuario.Id_Genero equals Genero.Id_Genero
+                               join Ciudad in _context.Ciudad on Usuario.Id_Ciudad equals Ciudad.Id_Ciudad
+                               join Departamento in _context.Departamento on Usuario.Id_Departamento equals Departamento.Id_Departamento
+                               where Usuario.Id_Usuario == id
+                               select new
+                               {
+                                   Usuario.Id_Usuario,
+                                   tipodocumento = TipoDocumento.Documento,
+                                   Usuario.Nombre,
+                                   Usuario.Apellido,
+                                   Usuario.Edad,
+                                   Usuario.Fecha_Nacido,
+                                   EstadoCivil = EstadoCivil.CivilNo,
+                                   Usuario.Ocupacion,
+                                   Genero = Genero.Sexo,
+                                   Ciudad.Municipio,
+                                   departamento = Departamento.NombreDepartamento,
+                                   fecha = Usuario.Atencion
+                               };
+                }
+                
 
 
             } catch (Exception ex)

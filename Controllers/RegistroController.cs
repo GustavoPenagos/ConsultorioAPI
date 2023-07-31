@@ -27,8 +27,9 @@ namespace ConsultorioAPI.Controllers
         {
             try
             {
-                var insert = usuario;
-                _context.Usuario.Add(insert);
+                usuario.Atencion = DateTime.Now;
+
+                _context.Usuario.Add(usuario);
                 _context.SaveChanges();
                 return Ok();
 
@@ -45,8 +46,9 @@ namespace ConsultorioAPI.Controllers
         {
             try
             {
-                var insert = anamnesis;
-                _context.Anamnesis.Add(insert);
+                anamnesis.Atencion = DateTime.Now;
+
+                _context.Anamnesis.Add(anamnesis);
                 _context.SaveChanges();
                 return Ok();
             }
@@ -62,8 +64,9 @@ namespace ConsultorioAPI.Controllers
         {
             try
             {
-                var insert = familiar;
-                _context.Ant_Familiar.Add(insert);
+                familiar.Atencion= DateTime.Now;
+
+                _context.Ant_Familiar.Add(familiar);
                 _context.SaveChanges();
                 return Ok();
 
@@ -80,8 +83,9 @@ namespace ConsultorioAPI.Controllers
         {
             try
             {
-                var insert = estomatologico;
-                _context.Estomatologico.Add(insert);
+                estomatologico.Atencion = DateTime.Now;
+
+                _context.Estomatologico.Add(estomatologico);
                 _context.SaveChanges();
                 return Ok();
 
@@ -133,9 +137,9 @@ namespace ConsultorioAPI.Controllers
         {
             try
             {
-                var insert = dentalAdulto;
+                dentalAdulto.Atencion = DateTime.Now;
 
-                _context.cartaDentalAdulto.Add(insert);
+                _context.cartaDentalAdulto.Add(dentalAdulto);
                 _context.SaveChanges();
                 return Ok();
 
@@ -151,9 +155,9 @@ namespace ConsultorioAPI.Controllers
         {
             try
             {
-                var insert = dentalNino;
+                dentalNino.Atencion = DateTime.Now;
 
-                _context.cartaDentalNino.Add(insert);
+                _context.cartaDentalNino.Add(dentalNino);
                 _context.SaveChanges();
                 return Ok();
 
@@ -165,7 +169,7 @@ namespace ConsultorioAPI.Controllers
 
         [HttpPost]
         [Route("/api/registro/citas")]
-        public async Task<dynamic> RegistroCitas(Citas citas)
+        public dynamic RegistroCitas(Citas citas)
         {
             try
             {

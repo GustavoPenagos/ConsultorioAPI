@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -7,7 +9,10 @@ namespace OdontologiaWeb.Models
 {
     public class Estomatologico
     {
-        public string Id_Usuario { get; set; }
+        [Key]
+        public int Id { get; set; }
+        [Required]
+        public long Id_Usuario { get; set; }
         public int Labios { get; set; }
         public int Encias { get; set; }
         public int Paladar { get; set; }
@@ -19,5 +24,6 @@ namespace OdontologiaWeb.Models
         public int Frenillos { get; set; }
         public int Maxilares { get; set; }
         public int Glan_Salivales { get; set; }
+        public DateTime Atencion { get; set; }
     }
 }

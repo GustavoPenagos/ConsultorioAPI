@@ -24,12 +24,13 @@ namespace ConsultorioAPI.Controllers
         {
             try
             {
-                return from Usuario in _context.Usuario
+                 var usuario = from Usuario in _context.Usuario
                             join TipoDocumento in _context.TipoDocumento on Usuario.Id_Documento equals TipoDocumento.Id_Documento
                             join EstadoCivil in _context.EstadoCivil on Usuario.Estado_Civil equals EstadoCivil.Id
                             join Genero in _context.Genero on Usuario.Id_Genero equals Genero.Id_Genero
                             join Ciudad in _context.Ciudad on Usuario.Id_Ciudad equals Ciudad.Id_Ciudad
-                            join Departamento in _context.Departamento on Usuario.Id_Departamento equals Departamento.Id_Departamento
+                            join Citas in _context.Citas on Usuario.Id_Usuario equals Citas.Id_Usuario into leftJoin
+                            from Citas in leftJoin.DefaultIfEmpty()
                             select new
                             {
                                 Usuario.Id_Usuario,
@@ -37,14 +38,12 @@ namespace ConsultorioAPI.Controllers
                                 Usuario.Nombre,
                                 Usuario.Apellido,
                                 Usuario.Edad,
-                                Usuario.Fecha_Nacido,
-                                EstadoCivil= EstadoCivil.CivilNo,
-                                Usuario.Ocupacion,
                                 Genero = Genero.Sexo,
-                                Ciudad.Municipio,
-                                departamento = Departamento.NombreDepartamento
-
+                                citas = Citas.FechaCita.ToShortDateString(),
+                                hora = Citas.HoraCita
                             };
+
+                return usuario.ToList();
             }
             catch (Exception ex)
             {
@@ -155,6 +154,25 @@ namespace ConsultorioAPI.Controllers
             {
                 return BadRequest(ex.Message);
             }
+        }
+
+        [HttpGet]
+        [Route("/api/lista/fotos")]
+        public dynamic ListaFotos(long id)
+        {
+            try
+            {
+                if (id == 0)
+                {
+                    return _context.Imagenes.Select(i => i.Imagen).ToList();
+                }
+                return _context.Imagenes.Where(i => i.Id_Usuario == id).Select(i => i.Imagen).ToList();
+
+            }catch (Exception ex)
+            {
+                return BadRequest();
+            }
+
         }
 
 

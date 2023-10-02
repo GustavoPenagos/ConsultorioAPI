@@ -18,7 +18,7 @@ namespace ConsultorioAPI.Controllers
         /// </summary>
         /// <param name="id">user id</param>
         /// <returns></returns>
-        [HttpGet]
+        [HttpDelete]
         [Route("/api/eliminar/usuario")]
         public dynamic EliminarUsuario(long id)
         {
@@ -106,8 +106,10 @@ namespace ConsultorioAPI.Controllers
             }
         }
 
+        #region
+        /*
         [HttpPost]
-        [Route("/apieditar/usuario")]
+        [Route("/api/editar/usuario")]
         public dynamic Editarusuario(Usuario usuario)
         {
             try
@@ -122,7 +124,7 @@ namespace ConsultorioAPI.Controllers
         }
 
         [HttpPost]
-        [Route("/apieditar/anamnesis")]
+        [Route("/api/editar/anamnesis")]
         public dynamic EditarAnamnesis(Anamnesis anamnesis)
         {
             try
@@ -138,7 +140,7 @@ namespace ConsultorioAPI.Controllers
         }
 
         [HttpPost]
-        [Route("/apieditar/familiar")]
+        [Route("/api/editar/familiar")]
         public dynamic EditarFamiliar(Ant_Familiar familiar)
         {
             try
@@ -154,7 +156,7 @@ namespace ConsultorioAPI.Controllers
         }
 
         [HttpPost]
-        [Route("/apieditar/estomatologico")]
+        [Route("/api/editar/estomatologico")]
         public dynamic EditarEstomatologico(Estomatologico estomatologico)
         {
             try
@@ -168,5 +170,7 @@ namespace ConsultorioAPI.Controllers
                 return BadRequest(ex.Message + Environment.NewLine + ex.StackTrace);
             }
         }
+        */
+        #endregion
     }
 }

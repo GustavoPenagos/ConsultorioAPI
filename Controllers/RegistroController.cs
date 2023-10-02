@@ -200,5 +200,21 @@ namespace ConsultorioAPI.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
+        [HttpPost]
+        [Route("/api/registro/imagen")]
+        public dynamic RegistroImagen(Imagenes imagenes)
+        {
+            try
+            {
+                _context.Imagenes.Add(imagenes);
+                _context.SaveChanges();
+                return Ok();
+
+            }catch(Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
     }
 }

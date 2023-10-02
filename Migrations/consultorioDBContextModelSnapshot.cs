@@ -4,19 +4,16 @@ using ConsultorioAPI.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace ConsultorioAPI.data.migrations
+namespace ConsultorioAPI.Migrations
 {
     [DbContext(typeof(consultorioDBContext))]
-    [Migration("20230722011850_initial")]
-    partial class initial
+    partial class consultorioDBContextModelSnapshot : ModelSnapshot
     {
-        /// <inheritdoc />
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -306,6 +303,28 @@ namespace ConsultorioAPI.data.migrations
                     b.HasKey("Id");
 
                     b.ToTable("EstadoTratamiento");
+                });
+
+            modelBuilder.Entity("ConsultorioAPI.Model.Imagenes", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime?>("Fecha_Carga")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Id_Usuario")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Imagen")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Imagenes");
                 });
 
             modelBuilder.Entity("ConsultorioAPI.Model.PlanTratamiento", b =>

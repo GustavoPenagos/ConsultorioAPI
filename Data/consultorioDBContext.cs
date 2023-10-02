@@ -1,5 +1,6 @@
 ﻿using ConsultorioAPI.Model;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Identity.Client;
 using OdontologiaWeb.Models;
 
 namespace ConsultorioAPI.Data
@@ -23,6 +24,7 @@ namespace ConsultorioAPI.Data
         public DbSet<CartaDentalAdulto> cartaDentalAdulto { get; set; }
         public DbSet<CartaDentalNino> cartaDentalNino{ get; set; }
         public DbSet<Citas> Citas { get; set; }
+        public DbSet<Imagenes> Imagenes { get; set; }
 
     }
 }

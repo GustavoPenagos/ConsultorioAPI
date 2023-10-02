@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace ConsultorioAPI.data.migrations
+namespace ConsultorioAPI.Migrations
 {
     /// <inheritdoc />
     public partial class initial : Migration
@@ -162,7 +162,8 @@ namespace ConsultorioAPI.data.migrations
                 name: "Ciudad",
                 columns: table => new
                 {
-                    Id_Ciudad = table.Column<int>(type: "int", nullable: false),
+                    Id_Ciudad = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Municipio = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Estado = table.Column<int>(type: "int", nullable: false),
                     Id_Departamento = table.Column<int>(type: "int", nullable: false)
@@ -189,7 +190,8 @@ namespace ConsultorioAPI.data.migrations
                 name: "Departamento",
                 columns: table => new
                 {
-                    Id_Departamento = table.Column<int>(type: "int", nullable: false),
+                    Id_Departamento = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     NombreDepartamento = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
@@ -268,6 +270,21 @@ namespace ConsultorioAPI.data.migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Imagenes",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id_Usuario = table.Column<int>(type: "int", nullable: false),
+                    Imagen = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Fecha_Carga = table.Column<DateTime>(type: "datetime2", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Imagenes", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "PlanTratamiento",
                 columns: table => new
                 {
@@ -301,7 +318,8 @@ namespace ConsultorioAPI.data.migrations
                 name: "Usuario",
                 columns: table => new
                 {
-                    Id_Usuario = table.Column<long>(type: "bigint", nullable: false),
+                    Id_Usuario = table.Column<long>(type: "bigint", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Id_Documento = table.Column<int>(type: "int", nullable: false),
                     Nombre = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Apellido = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -365,6 +383,9 @@ namespace ConsultorioAPI.data.migrations
 
             migrationBuilder.DropTable(
                 name: "Genero");
+
+            migrationBuilder.DropTable(
+                name: "Imagenes");
 
             migrationBuilder.DropTable(
                 name: "PlanTratamiento");

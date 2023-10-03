@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ConsultorioAPI.Migrations
 {
     [DbContext(typeof(consultorioDBContext))]
-    [Migration("20231001203053_initial")]
-    partial class initial
+    [Migration("20231003041515_Migrations")]
+    partial class Migrations
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -36,7 +36,7 @@ namespace ConsultorioAPI.Migrations
                     b.Property<DateTime>("Atencion")
                         .HasColumnType("datetime2");
 
-                    b.Property<long>("Id_Usuario")
+                    b.Property<long>("IdUsuario")
                         .HasColumnType("bigint");
 
                     b.Property<string>("c11")
@@ -152,7 +152,7 @@ namespace ConsultorioAPI.Migrations
                     b.Property<DateTime>("Atencion")
                         .HasColumnType("datetime2");
 
-                    b.Property<long>("Id_Usuario")
+                    b.Property<long>("IdUsuario")
                         .HasColumnType("bigint");
 
                     b.Property<string>("c51")
@@ -234,7 +234,7 @@ namespace ConsultorioAPI.Migrations
                     b.Property<string>("HoraCita")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<long>("Id_Usuario")
+                    b.Property<long>("IdUsuario")
                         .HasColumnType("bigint");
 
                     b.HasKey("Id");
@@ -297,10 +297,10 @@ namespace ConsultorioAPI.Migrations
                     b.Property<string>("Firma")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<long>("Id_Usuario")
+                    b.Property<long>("IdUsuario")
                         .HasColumnType("bigint");
 
-                    b.Property<string>("Trata_Efectuado")
+                    b.Property<string>("TrataEfectuado")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -316,10 +316,10 @@ namespace ConsultorioAPI.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<DateTime?>("Fecha_Carga")
+                    b.Property<DateTime?>("FechaCarga")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("Id_Usuario")
+                    b.Property<int>("IdUsuario")
                         .HasColumnType("int");
 
                     b.Property<string>("Imagen")
@@ -344,7 +344,7 @@ namespace ConsultorioAPI.Migrations
                     b.Property<string>("Diagnostico")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<long>("Id_Usuario")
+                    b.Property<long>("IdUsuario")
                         .HasColumnType("bigint");
 
                     b.Property<string>("Pronostico")
@@ -369,13 +369,13 @@ namespace ConsultorioAPI.Migrations
                     b.Property<DateTime>("Atencion")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Emf_Actual")
+                    b.Property<string>("EmferActual")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<long>("Id_Usuario")
+                    b.Property<long>("IdUsuario")
                         .HasColumnType("bigint");
 
-                    b.Property<string>("Motivo_Consulta")
+                    b.Property<string>("MotivoConsulta")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -391,7 +391,7 @@ namespace ConsultorioAPI.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("Alt_Coagulatorias")
+                    b.Property<int>("AltCoagulatorias")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("Atencion")
@@ -403,7 +403,7 @@ namespace ConsultorioAPI.Migrations
                     b.Property<int>("Cardiopatias")
                         .HasColumnType("int");
 
-                    b.Property<int>("Ceda_Dental")
+                    b.Property<int>("CedaDental")
                         .HasColumnType("int");
 
                     b.Property<int>("Diabetes")
@@ -412,13 +412,13 @@ namespace ConsultorioAPI.Migrations
                     b.Property<int>("Embarazo")
                         .HasColumnType("int");
 
-                    b.Property<int>("Enf_Respiratoria")
+                    b.Property<int>("EnferRespiratoria")
                         .HasColumnType("int");
 
                     b.Property<int>("Fieb_Reumatica")
                         .HasColumnType("int");
 
-                    b.Property<int>("Fre_Cepillado")
+                    b.Property<int>("FreCepillado")
                         .HasColumnType("int");
 
                     b.Property<int>("Hepatitis")
@@ -427,7 +427,7 @@ namespace ConsultorioAPI.Migrations
                     b.Property<int>("Hipertension")
                         .HasColumnType("int");
 
-                    b.Property<long>("Id_Usuario")
+                    b.Property<long>("IdUsuario")
                         .HasColumnType("bigint");
 
                     b.Property<int>("Infecciones")
@@ -442,7 +442,7 @@ namespace ConsultorioAPI.Migrations
                     b.Property<string>("Observaciones")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Organos_Sentidos")
+                    b.Property<int>("OrganosSentidos")
                         .HasColumnType("int");
 
                     b.Property<string>("Otros")
@@ -451,16 +451,16 @@ namespace ConsultorioAPI.Migrations
                     b.Property<int>("Sinusitis")
                         .HasColumnType("int");
 
-                    b.Property<int>("Ten_Arterial")
+                    b.Property<int>("TenArterial")
                         .HasColumnType("int");
 
-                    b.Property<int>("Trans_Gastricos")
+                    b.Property<int>("TransGastricos")
                         .HasColumnType("int");
 
-                    b.Property<int>("Trans_Neumologico")
+                    b.Property<int>("TransNeumologico")
                         .HasColumnType("int");
 
-                    b.Property<int>("Trata_Medico")
+                    b.Property<int>("TrataMedico")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -470,38 +470,38 @@ namespace ConsultorioAPI.Migrations
 
             modelBuilder.Entity("OdontologiaWeb.Models.Ciudad", b =>
                 {
-                    b.Property<int>("Id_Ciudad")
+                    b.Property<int>("IdCiudad")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id_Ciudad"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdCiudad"));
 
                     b.Property<int>("Estado")
                         .HasColumnType("int");
 
-                    b.Property<int>("Id_Departamento")
+                    b.Property<int>("IdDepartamento")
                         .HasColumnType("int");
 
                     b.Property<string>("Municipio")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id_Ciudad");
+                    b.HasKey("IdCiudad");
 
                     b.ToTable("Ciudad");
                 });
 
             modelBuilder.Entity("OdontologiaWeb.Models.Departamento", b =>
                 {
-                    b.Property<int>("Id_Departamento")
+                    b.Property<int>("IdDepartamento")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id_Departamento"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdDepartamento"));
 
                     b.Property<string>("NombreDepartamento")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id_Departamento");
+                    b.HasKey("IdDepartamento");
 
                     b.ToTable("Departamento");
                 });
@@ -526,10 +526,10 @@ namespace ConsultorioAPI.Migrations
                     b.Property<int>("Frenillos")
                         .HasColumnType("int");
 
-                    b.Property<int>("Glan_Salivales")
+                    b.Property<int>("GlanSalivales")
                         .HasColumnType("int");
 
-                    b.Property<long>("Id_Usuario")
+                    b.Property<long>("IdUsuario")
                         .HasColumnType("bigint");
 
                     b.Property<int>("Labios")
@@ -560,45 +560,45 @@ namespace ConsultorioAPI.Migrations
 
             modelBuilder.Entity("OdontologiaWeb.Models.Genero", b =>
                 {
-                    b.Property<int>("Id_Genero")
+                    b.Property<int>("IdGenero")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id_Genero"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdGenero"));
 
                     b.Property<string>("Sexo")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id_Genero");
+                    b.HasKey("IdGenero");
 
                     b.ToTable("Genero");
                 });
 
             modelBuilder.Entity("OdontologiaWeb.Models.TipoDocumento", b =>
                 {
-                    b.Property<int>("Id_Documento")
+                    b.Property<int>("IdDocumento")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id_Documento"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdDocumento"));
 
                     b.Property<string>("Documento")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id_Documento");
+                    b.HasKey("IdDocumento");
 
                     b.ToTable("TipoDocumento");
                 });
 
             modelBuilder.Entity("OdontologiaWeb.Models.Usuario", b =>
                 {
-                    b.Property<long>("Id_Usuario")
+                    b.Property<long>("IdUsuario")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id_Usuario"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("IdUsuario"));
 
                     b.Property<string>("Apellido")
                         .HasColumnType("nvarchar(max)");
@@ -615,28 +615,28 @@ namespace ConsultorioAPI.Migrations
                     b.Property<int>("Edad")
                         .HasColumnType("int");
 
-                    b.Property<int>("Estado_Civil")
+                    b.Property<int>("EstadoCivil")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("Fecha_Nacido")
+                    b.Property<DateTime>("FechaNacido")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("Id_Ciudad")
+                    b.Property<int>("IdCiudad")
                         .HasColumnType("int");
 
-                    b.Property<int>("Id_Departamento")
+                    b.Property<int>("IdDepartamento")
                         .HasColumnType("int");
 
-                    b.Property<int>("Id_Documento")
+                    b.Property<int>("IdDocumento")
                         .HasColumnType("int");
 
-                    b.Property<int>("Id_Genero")
+                    b.Property<int>("IdGenero")
                         .HasColumnType("int");
 
                     b.Property<string>("Nombre")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Nombre_Acudiente")
+                    b.Property<string>("NombreAcudiente")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Observaciones")
@@ -654,7 +654,7 @@ namespace ConsultorioAPI.Migrations
                     b.Property<string>("Telefono")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id_Usuario");
+                    b.HasKey("IdUsuario");
 
                     b.ToTable("Usuario");
                 });

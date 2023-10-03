@@ -27,8 +27,6 @@ namespace ConsultorioAPI.Controllers
         {
             try
             {
-                usuario.Atencion = DateTime.Now;
-
                 _context.Usuario.Add(usuario);
                 _context.SaveChanges();
                 return Ok();
@@ -46,8 +44,6 @@ namespace ConsultorioAPI.Controllers
         {
             try
             {
-                anamnesis.Atencion = DateTime.Now;
-
                 _context.Anamnesis.Add(anamnesis);
                 _context.SaveChanges();
                 return Ok();
@@ -64,8 +60,6 @@ namespace ConsultorioAPI.Controllers
         {
             try
             {
-                familiar.Atencion= DateTime.Now;
-
                 _context.Ant_Familiar.Add(familiar);
                 _context.SaveChanges();
                 return Ok();
@@ -83,8 +77,6 @@ namespace ConsultorioAPI.Controllers
         {
             try
             {
-                estomatologico.Atencion = DateTime.Now;
-
                 _context.Estomatologico.Add(estomatologico);
                 _context.SaveChanges();
                 return Ok();
@@ -101,8 +93,7 @@ namespace ConsultorioAPI.Controllers
         {
             try
             {
-                var insert = tratamiento;
-                _context.PlanTratamiento.Add(insert);
+                _context.PlanTratamiento.Add(tratamiento);
                 _context.SaveChanges();
                 return Ok();
 
@@ -119,8 +110,7 @@ namespace ConsultorioAPI.Controllers
         {
             try
             {
-                var insert = estado;
-                _context.EstadoTratamiento.Add(insert);
+                _context.EstadoTratamiento.Add(estado);
                 _context.SaveChanges();
 
                 return Ok();
@@ -137,8 +127,6 @@ namespace ConsultorioAPI.Controllers
         {
             try
             {
-                dentalAdulto.Atencion = DateTime.Now;
-
                 _context.cartaDentalAdulto.Add(dentalAdulto);
                 _context.SaveChanges();
                 return Ok();
@@ -155,8 +143,6 @@ namespace ConsultorioAPI.Controllers
         {
             try
             {
-                dentalNino.Atencion = DateTime.Now;
-
                 _context.cartaDentalNino.Add(dentalNino);
                 _context.SaveChanges();
                 return Ok();
@@ -173,7 +159,7 @@ namespace ConsultorioAPI.Controllers
         {
             try
             {
-                var persona = _context.Citas.Where(x => x.Id_Usuario == citas.Id_Usuario).FirstOrDefault();
+                var persona = _context.Citas.Where(x => x.IdUsuario == citas.IdUsuario).FirstOrDefault();
                 if (persona != null)
                 {
                     persona.FechaCita = citas.FechaCita;
@@ -185,7 +171,7 @@ namespace ConsultorioAPI.Controllers
                 {
                     Citas cita = new Citas
                     {
-                        Id_Usuario = citas.Id_Usuario,
+                        IdUsuario = citas.IdUsuario,
                         FechaCita = citas.FechaCita,
                         HoraCita = citas.HoraCita
                     };

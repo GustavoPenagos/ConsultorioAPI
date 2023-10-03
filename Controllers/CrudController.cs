@@ -30,43 +30,43 @@ namespace ConsultorioAPI.Controllers
                     _context.Usuario.RemoveRange(user);
                     _context.SaveChanges();
                 }
-                var anam = _context.Anamnesis.Where(b => b.Id_Usuario == id);
+                var anam = _context.Anamnesis.Where(b => b.IdUsuario == id);
                 if (anam != null)
                 {
                     _context.Anamnesis.RemoveRange(anam);
                     _context.SaveChanges();
                 }
-                var fam = _context.Ant_Familiar.Where(b => b.Id_Usuario == id);
+                var fam = _context.Ant_Familiar.Where(b => b.IdUsuario == id);
                 if (fam != null)
                 {
                     _context.Ant_Familiar.RemoveRange(fam);
                     _context.SaveChanges();
                 }
-                var dNino = _context.cartaDentalNino.Where(b => b.Id_Usuario == id);
+                var dNino = _context.cartaDentalNino.Where(b => b.IdUsuario == id);
                 if (dNino != null)
                 {
                     _context.cartaDentalNino.RemoveRange(dNino);
                     _context.SaveChanges();
                 }
-                var dAdl = _context.cartaDentalAdulto.Where(b => b.Id_Usuario == id);
+                var dAdl = _context.cartaDentalAdulto.Where(b => b.IdUsuario == id);
                 if (dAdl != null)
                 {
                     _context.cartaDentalAdulto.RemoveRange(dAdl);
                     _context.SaveChanges();
                 }
-                var eTrta = _context.EstadoTratamiento.Where(b => b.Id_Usuario == id);
+                var eTrta = _context.EstadoTratamiento.Where(b => b.IdUsuario == id);
                 if (eTrta != null)
                 {
                     _context.EstadoTratamiento.RemoveRange(eTrta);
                     _context.SaveChanges();
                 }
-                var estoma = _context.Estomatologico.Where(b => b.Id_Usuario == id);
+                var estoma = _context.Estomatologico.Where(b => b.IdUsuario == id);
                 if (estoma != null)
                 {
                     _context.Estomatologico.RemoveRange(estoma);
                     _context.SaveChanges();
                 }
-                var plan = _context.PlanTratamiento.Where(b => b.Id_Usuario == id);
+                var plan = _context.PlanTratamiento.Where(b => b.IdUsuario == id);
                 if (plan != null)
                 {
                     _context.PlanTratamiento.RemoveRange(plan);
@@ -93,7 +93,7 @@ namespace ConsultorioAPI.Controllers
         {
             try
             {
-                var cita = _context.Citas.Where(x => x.Id_Usuario == id).FirstOrDefault();
+                var cita = _context.Citas.Where(x => x.IdUsuario == id).FirstOrDefault();
                 if(cita != null)
                 {
                     _context.Citas.RemoveRange(cita);

@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace ConsultorioAPI.Migrations
 {
     /// <inheritdoc />
-    public partial class initial : Migration
+    public partial class Migrations : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -17,9 +17,9 @@ namespace ConsultorioAPI.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Id_Usuario = table.Column<long>(type: "bigint", nullable: false),
-                    Motivo_Consulta = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Emf_Actual = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    IdUsuario = table.Column<long>(type: "bigint", nullable: false),
+                    MotivoConsulta = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    EmferActual = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Atencion = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
@@ -33,28 +33,28 @@ namespace ConsultorioAPI.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Id_Usuario = table.Column<long>(type: "bigint", nullable: false),
+                    IdUsuario = table.Column<long>(type: "bigint", nullable: false),
                     Cancer = table.Column<int>(type: "int", nullable: false),
                     Sinusitis = table.Column<int>(type: "int", nullable: false),
-                    Organos_Sentidos = table.Column<int>(type: "int", nullable: false),
+                    OrganosSentidos = table.Column<int>(type: "int", nullable: false),
                     Diabetes = table.Column<int>(type: "int", nullable: false),
                     Infecciones = table.Column<int>(type: "int", nullable: false),
                     Hepatitis = table.Column<int>(type: "int", nullable: false),
-                    Trans_Gastricos = table.Column<int>(type: "int", nullable: false),
+                    TransGastricos = table.Column<int>(type: "int", nullable: false),
                     Cardiopatias = table.Column<int>(type: "int", nullable: false),
                     Fieb_Reumatica = table.Column<int>(type: "int", nullable: false),
-                    Trata_Medico = table.Column<int>(type: "int", nullable: false),
-                    Enf_Respiratoria = table.Column<int>(type: "int", nullable: false),
+                    TrataMedico = table.Column<int>(type: "int", nullable: false),
+                    EnferRespiratoria = table.Column<int>(type: "int", nullable: false),
                     Hipertension = table.Column<int>(type: "int", nullable: false),
-                    Alt_Coagulatorias = table.Column<int>(type: "int", nullable: false),
-                    Trans_Neumologico = table.Column<int>(type: "int", nullable: false),
-                    Ten_Arterial = table.Column<int>(type: "int", nullable: false),
+                    AltCoagulatorias = table.Column<int>(type: "int", nullable: false),
+                    TransNeumologico = table.Column<int>(type: "int", nullable: false),
+                    TenArterial = table.Column<int>(type: "int", nullable: false),
                     Otros = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Embarazo = table.Column<int>(type: "int", nullable: false),
                     Meses = table.Column<int>(type: "int", nullable: false),
                     Lactancia = table.Column<int>(type: "int", nullable: false),
-                    Fre_Cepillado = table.Column<int>(type: "int", nullable: false),
-                    Ceda_Dental = table.Column<int>(type: "int", nullable: false),
+                    FreCepillado = table.Column<int>(type: "int", nullable: false),
+                    CedaDental = table.Column<int>(type: "int", nullable: false),
                     Observaciones = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Atencion = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
@@ -69,7 +69,7 @@ namespace ConsultorioAPI.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Id_Usuario = table.Column<long>(type: "bigint", nullable: false),
+                    IdUsuario = table.Column<long>(type: "bigint", nullable: false),
                     c11 = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     c12 = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     c13 = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -115,7 +115,7 @@ namespace ConsultorioAPI.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Id_Usuario = table.Column<long>(type: "bigint", nullable: false),
+                    IdUsuario = table.Column<long>(type: "bigint", nullable: false),
                     c51 = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     c52 = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     c53 = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -149,7 +149,7 @@ namespace ConsultorioAPI.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Id_Usuario = table.Column<long>(type: "bigint", nullable: false),
+                    IdUsuario = table.Column<long>(type: "bigint", nullable: false),
                     FechaCita = table.Column<DateTime>(type: "datetime2", nullable: false),
                     HoraCita = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
@@ -162,15 +162,14 @@ namespace ConsultorioAPI.Migrations
                 name: "Ciudad",
                 columns: table => new
                 {
-                    Id_Ciudad = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    IdCiudad = table.Column<int>(type: "int", nullable: false),
                     Municipio = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Estado = table.Column<int>(type: "int", nullable: false),
-                    Id_Departamento = table.Column<int>(type: "int", nullable: false)
+                    IdDepartamento = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Ciudad", x => x.Id_Ciudad);
+                    table.PrimaryKey("PK_Ciudad", x => x.IdCiudad);
                 });
 
             migrationBuilder.CreateTable(
@@ -190,13 +189,12 @@ namespace ConsultorioAPI.Migrations
                 name: "Departamento",
                 columns: table => new
                 {
-                    Id_Departamento = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    IdDepartamento = table.Column<int>(type: "int", nullable: false),
                     NombreDepartamento = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Departamento", x => x.Id_Departamento);
+                    table.PrimaryKey("PK_Departamento", x => x.IdDepartamento);
                 });
 
             migrationBuilder.CreateTable(
@@ -218,10 +216,10 @@ namespace ConsultorioAPI.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Id_Usuario = table.Column<long>(type: "bigint", nullable: false),
+                    IdUsuario = table.Column<long>(type: "bigint", nullable: false),
                     Fecha = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Diente = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Trata_Efectuado = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    TrataEfectuado = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Doctor = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Firma = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Atencion = table.Column<DateTime>(type: "datetime2", nullable: false)
@@ -237,7 +235,7 @@ namespace ConsultorioAPI.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Id_Usuario = table.Column<long>(type: "bigint", nullable: false),
+                    IdUsuario = table.Column<long>(type: "bigint", nullable: false),
                     Labios = table.Column<int>(type: "int", nullable: false),
                     Encias = table.Column<int>(type: "int", nullable: false),
                     Paladar = table.Column<int>(type: "int", nullable: false),
@@ -248,7 +246,7 @@ namespace ConsultorioAPI.Migrations
                     Orofarige = table.Column<int>(type: "int", nullable: false),
                     Frenillos = table.Column<int>(type: "int", nullable: false),
                     Maxilares = table.Column<int>(type: "int", nullable: false),
-                    Glan_Salivales = table.Column<int>(type: "int", nullable: false),
+                    GlanSalivales = table.Column<int>(type: "int", nullable: false),
                     Atencion = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
@@ -260,13 +258,13 @@ namespace ConsultorioAPI.Migrations
                 name: "Genero",
                 columns: table => new
                 {
-                    Id_Genero = table.Column<int>(type: "int", nullable: false)
+                    IdGenero = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Sexo = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Genero", x => x.Id_Genero);
+                    table.PrimaryKey("PK_Genero", x => x.IdGenero);
                 });
 
             migrationBuilder.CreateTable(
@@ -275,9 +273,9 @@ namespace ConsultorioAPI.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Id_Usuario = table.Column<int>(type: "int", nullable: false),
+                    IdUsuario = table.Column<int>(type: "int", nullable: false),
                     Imagen = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Fecha_Carga = table.Column<DateTime>(type: "datetime2", nullable: true)
+                    FechaCarga = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -290,7 +288,7 @@ namespace ConsultorioAPI.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Id_Usuario = table.Column<long>(type: "bigint", nullable: false),
+                    IdUsuario = table.Column<long>(type: "bigint", nullable: false),
                     Diagnostico = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Pronostico = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Tratamiento = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -305,43 +303,42 @@ namespace ConsultorioAPI.Migrations
                 name: "TipoDocumento",
                 columns: table => new
                 {
-                    Id_Documento = table.Column<int>(type: "int", nullable: false)
+                    IdDocumento = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Documento = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_TipoDocumento", x => x.Id_Documento);
+                    table.PrimaryKey("PK_TipoDocumento", x => x.IdDocumento);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Usuario",
                 columns: table => new
                 {
-                    Id_Usuario = table.Column<long>(type: "bigint", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Id_Documento = table.Column<int>(type: "int", nullable: false),
+                    IdUsuario = table.Column<long>(type: "bigint", nullable: false),
+                    IdDocumento = table.Column<int>(type: "int", nullable: false),
                     Nombre = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Apellido = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Edad = table.Column<int>(type: "int", nullable: false),
-                    Fecha_Nacido = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Estado_Civil = table.Column<int>(type: "int", nullable: false),
+                    FechaNacido = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    EstadoCivil = table.Column<int>(type: "int", nullable: false),
                     Ocupacion = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Aseguradora = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Direccion = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Telefono = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Id_Genero = table.Column<int>(type: "int", nullable: false),
-                    Id_Ciudad = table.Column<int>(type: "int", nullable: false),
-                    Id_Departamento = table.Column<int>(type: "int", nullable: false),
+                    IdGenero = table.Column<int>(type: "int", nullable: false),
+                    IdCiudad = table.Column<int>(type: "int", nullable: false),
+                    IdDepartamento = table.Column<int>(type: "int", nullable: false),
                     Oficina = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Nombre_Acudiente = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    NombreAcudiente = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Referido = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Observaciones = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Atencion = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Usuario", x => x.Id_Usuario);
+                    table.PrimaryKey("PK_Usuario", x => x.IdUsuario);
                 });
         }
 

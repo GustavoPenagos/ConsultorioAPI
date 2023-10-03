@@ -30,26 +30,26 @@ namespace ConsultorioAPI.Controllers
                 switch (fuente)
                 {
                     case "registro":
-                        DateTime fecha = _context.Usuario.Where(i => i.Id_Usuario == id).Select(i => i.Fecha_Nacido).FirstOrDefault();
+                        DateTime fecha = _context.Usuario.Where(i => i.IdUsuario == id).Select(i => i.FechaNacido).FirstOrDefault();
                         var dias = DateTime.Now - fecha;
                         var anios = dias.Days /365;
                         return anios;
                     case "htl":
                         return from Usuario in _context.Usuario
-                                           join TipoDocumento in _context.TipoDocumento on Usuario.Id_Documento equals TipoDocumento.Id_Documento
-                                           join EstadoCivil in _context.EstadoCivil on Usuario.Estado_Civil equals EstadoCivil.Id
-                                           join Genero in _context.Genero on Usuario.Id_Genero equals Genero.Id_Genero
-                                           join Ciudad in _context.Ciudad on Usuario.Id_Ciudad equals Ciudad.Id_Ciudad
-                                           join Departamento in _context.Departamento on Usuario.Id_Departamento equals Departamento.Id_Departamento
-                                           where Usuario.Id_Usuario == id
+                                           join TipoDocumento in _context.TipoDocumento on Usuario.IdDocumento equals TipoDocumento.IdDocumento
+                                           join EstadoCivil in _context.EstadoCivil on Usuario.EstadoCivil equals EstadoCivil.Id
+                                           join Genero in _context.Genero on Usuario.IdGenero equals Genero.IdGenero
+                                           join Ciudad in _context.Ciudad on Usuario.IdCiudad equals Ciudad.IdCiudad
+                                           join Departamento in _context.Departamento on Usuario.IdDepartamento equals Departamento.IdDepartamento
+                                           where Usuario.IdUsuario == id
                                            select new
                                            {
-                                               Usuario.Id_Usuario,
+                                               Usuario.IdUsuario,
                                                tipodocumento = TipoDocumento.Documento,
                                                Usuario.Nombre,
                                                Usuario.Apellido,
                                                Usuario.Edad,
-                                               fecaNacido = Usuario.Fecha_Nacido.ToShortDateString(),
+                                               fecaNacido = Usuario.FechaNacido.ToShortDateString(),
                                                EstadoCivil = EstadoCivil.CivilNo,
                                                aseguradora = Usuario.Aseguradora == null ? "Ninguno" : Usuario.Aseguradora,
                                                direccion = Usuario.Direccion == null ? "Ninguno" : Usuario.Direccion,
@@ -59,21 +59,21 @@ namespace ConsultorioAPI.Controllers
                                                Ciudad.Municipio,
                                                departamento = Departamento.NombreDepartamento,
                                                fechaAtencion = Usuario.Atencion,
-                                               acudiente = Usuario.Nombre_Acudiente == null ? "Ninguno" : Usuario.Nombre_Acudiente,
+                                               acudiente = Usuario.NombreAcudiente == null ? "Ninguno" : Usuario.NombreAcudiente,
                                                observaciones = Usuario.Observaciones == null ? "Ninguno" : Usuario.Observaciones
                                            };
 
                     default:
                         var usuario = (from Usuario in _context.Usuario
-                            join TipoDocumento in _context.TipoDocumento on Usuario.Id_Documento equals TipoDocumento.Id_Documento
-                            join EstadoCivil in _context.EstadoCivil on Usuario.Estado_Civil equals EstadoCivil.Id
-                            join Genero in _context.Genero on Usuario.Id_Genero equals Genero.Id_Genero
-                            join Ciudad in _context.Ciudad on Usuario.Id_Ciudad equals Ciudad.Id_Ciudad
-                            join Citas in _context.Citas on Usuario.Id_Usuario equals Citas.Id_Usuario into leftJoin
+                            join TipoDocumento in _context.TipoDocumento on Usuario.IdDocumento equals TipoDocumento.IdDocumento
+                            join EstadoCivil in _context.EstadoCivil on Usuario.EstadoCivil equals EstadoCivil.Id
+                            join Genero in _context.Genero on Usuario.IdGenero equals Genero.IdGenero
+                            join Ciudad in _context.Ciudad on Usuario.IdCiudad equals Ciudad.IdCiudad
+                            join Citas in _context.Citas on Usuario.IdUsuario equals Citas.IdUsuario into leftJoin
                                from Citas in leftJoin.DefaultIfEmpty()
                                select new
                             {
-                                Usuario.Id_Usuario,
+                                Usuario.IdUsuario,
                                 tipodocumento = TipoDocumento.Documento,
                                 Usuario.Nombre,
                                 Usuario.Apellido,
@@ -81,7 +81,7 @@ namespace ConsultorioAPI.Controllers
                                 Genero = Genero.Sexo,
                                 citas = Citas.FechaCita.ToShortDateString(),
                                 hora = Citas.HoraCita
-                            }).Where(i => i.Id_Usuario == id).ToList();
+                            }).Where(i => i.IdUsuario == id).ToList();
                         return usuario;
                 }
                 
@@ -104,7 +104,7 @@ namespace ConsultorioAPI.Controllers
         {
             try
             {
-                var departamento = _context.Ciudad.Where(c => c.Id_Ciudad == id).Select(d => d.Id_Departamento).ToList();
+                var departamento = _context.Ciudad.Where(c => c.IdCiudad == id).Select(d => d.IdDepartamento).ToList();
                 return Convert.ToInt32(departamento[0].ToString());
             }
             catch (Exception ex)
@@ -125,13 +125,13 @@ namespace ConsultorioAPI.Controllers
             try
             {
                 return from Citas in _context.Citas
-                       join Usuario in _context.Usuario on Citas.Id_Usuario equals Usuario.Id_Usuario
-                       where Usuario.Id_Usuario == id
+                       join Usuario in _context.Usuario on Citas.IdUsuario equals Usuario.IdUsuario
+                       where Usuario.IdUsuario == id
                        select new
                        {
                            Nombre = Usuario.Nombre,
                            Apellido = Usuario.Apellido,
-                           Identificacion = Usuario.Id_Usuario,
+                           Identificacion = Usuario.IdUsuario,
                            FechaCita = Citas.FechaCita
                        };
 
@@ -151,11 +151,11 @@ namespace ConsultorioAPI.Controllers
                 if(id == 0)
                 {
                     return from Citas in _context.Citas
-                           join Usuario in _context.Usuario on Citas.Id_Usuario equals Usuario.Id_Usuario
+                           join Usuario in _context.Usuario on Citas.IdUsuario equals Usuario.IdUsuario
                            orderby Citas.FechaCita, Citas.HoraCita ascending
                            select new
                            {
-                               Documento = Usuario.Id_Usuario,
+                               Documento = Usuario.IdUsuario,
                                Nombre = Usuario.Nombre,
                                Apellido = Usuario.Apellido,
                                Telefono = Usuario.Telefono,
@@ -164,11 +164,11 @@ namespace ConsultorioAPI.Controllers
                            };
                 }
                 return from Citas in _context.Citas
-                       join Usuario in _context.Usuario on Citas.Id_Usuario equals Usuario.Id_Usuario
-                       where Usuario.Id_Usuario == id
+                       join Usuario in _context.Usuario on Citas.IdUsuario equals Usuario.IdUsuario
+                       where Usuario.IdUsuario == id
                        select new
                        {
-                           Documento = Usuario.Id_Usuario,
+                           Documento = Usuario.IdUsuario,
                            Nombre = Usuario.Nombre,
                            Apellido = Usuario.Apellido,
                            Fecha = Citas.FechaCita,

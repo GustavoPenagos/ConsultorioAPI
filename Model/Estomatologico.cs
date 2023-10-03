@@ -12,7 +12,7 @@ namespace OdontologiaWeb.Models
         [Key]
         public int Id { get; set; }
         [Required]
-        public long Id_Usuario { get; set; }
+        public long IdUsuario { get; set; }
         public int Labios { get; set; }
         public int Encias { get; set; }
         public int Paladar { get; set; }
@@ -23,7 +23,7 @@ namespace OdontologiaWeb.Models
         public int Orofarige { get; set; }
         public int Frenillos { get; set; }
         public int Maxilares { get; set; }
-        public int Glan_Salivales { get; set; }
-        public DateTime Atencion { get; set; }
+        public int GlanSalivales { get; set; }
+        public DateTime Atencion { get; set; } = DateTime.Now;
     }
 }

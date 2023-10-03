@@ -7,8 +7,8 @@ namespace ConsultorioAPI.Model
         [Key] 
         public int Id { get; set; }
         [Required]
-        public int Id_Usuario { get; set; }
+        public int IdUsuario { get; set; }
         public string? Imagen { get; set;}
-        public DateTime? Fecha_Carga { get; set; }
+        public DateTime? FechaCarga { get; set; }
     }
 }

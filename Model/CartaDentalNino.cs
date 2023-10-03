@@ -8,7 +8,7 @@ namespace ConsultorioAPI.Model
         [Key]
         public int Id { get; set; }
         [Required]
-        public long Id_Usuario { get; set; }
+        public long IdUsuario { get; set; }
         public string? c51 { get; set; }
         public string? c52 { get; set; }
         public string? c53 { get; set; }
@@ -29,6 +29,6 @@ namespace ConsultorioAPI.Model
         public string? c83 { get; set; }
         public string? c84 { get; set; }
         public string? c85 { get; set; }
-        public DateTime Atencion { get; set; }
+        public DateTime Atencion { get; set; } = DateTime.Now;
     }
 }

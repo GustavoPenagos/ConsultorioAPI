@@ -20,7 +20,7 @@ namespace ConsultorioAPI.Model
         public string? c18 { get; set; }
         public string? c21 { get; set; }
         public string? c22 { get; set; }
-        public string c23 { get; set; }
+        public string? c23 { get; set; }
         public string? c24 { get; set; }
         public string? c25 { get; set; }
         public string? c26 { get; set; }

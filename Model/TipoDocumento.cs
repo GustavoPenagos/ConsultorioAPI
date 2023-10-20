@@ -10,6 +10,6 @@ namespace OdontologiaWeb.Models
     {
         [Key]
         public  int IdDocumento { get; set; }
-        public string Documento { get; set; }
+        public string? Documento { get; set; }
     }
 }

@@ -11,6 +11,6 @@ namespace OdontologiaWeb.Models
     {
         [Key]
         public int IdGenero { get; set; }
-        public string Sexo { get; set;}
+        public string? Sexo { get; set;}
     }
 }

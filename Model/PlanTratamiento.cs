@@ -12,6 +12,6 @@ namespace ConsultorioAPI.Model
         public string? Diagnostico {get; set; }
         public string? Pronostico { get; set; }
         public string? Tratamiento{ get; set; }
-        public DateTime Atencion { get; set; }
+        public DateTime Atencion { get; set; } 
     }
 }

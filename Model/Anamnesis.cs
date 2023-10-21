@@ -16,6 +16,6 @@ namespace OdontologiaWeb.Models
         public long IdUsuario { get; set; }
         public string? MotivoConsulta { get; set; }
         public string? EmferActual { get; set; }
-        public DateTime Atencion { get; set; } = DateTime.Now;
+        public DateTime Atencion { get; set; }
     }
 }

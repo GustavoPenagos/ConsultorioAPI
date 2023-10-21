@@ -42,7 +42,7 @@ namespace ConsultorioAPI.Model
         public string? c46 { get; set; }
         public string? c47 { get; set; }
         public string? c48 { get; set; }
-        public DateTime Atencion { get; set; } = DateTime.Now;
+        public DateTime Atencion { get; set; } 
 
     }
 }

@@ -17,7 +17,7 @@ namespace ConsultorioAPI.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "7.0.9")
+                .HasAnnotation("ProductVersion", "7.0.12")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -67,7 +67,6 @@ namespace ConsultorioAPI.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("c23")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("c24")
@@ -237,6 +236,34 @@ namespace ConsultorioAPI.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Citas");
+                });
+
+            modelBuilder.Entity("ConsultorioAPI.Model.Contabilidad", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<double>("Abono")
+                        .HasColumnType("float");
+
+                    b.Property<DateTime>("FechaRegistro")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long>("IdUsuario")
+                        .HasColumnType("bigint");
+
+                    b.Property<double>("Saldo")
+                        .HasColumnType("float");
+
+                    b.Property<double>("Valor")
+                        .HasColumnType("float");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Contabilidad");
                 });
 
             modelBuilder.Entity("ConsultorioAPI.Model.Convecciones", b =>
@@ -564,7 +591,6 @@ namespace ConsultorioAPI.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdGenero"));
 
                     b.Property<string>("Sexo")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("IdGenero");
@@ -581,7 +607,6 @@ namespace ConsultorioAPI.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdDocumento"));
 
                     b.Property<string>("Documento")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("IdDocumento");

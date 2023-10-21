@@ -15,11 +15,13 @@ namespace ConsultorioAPI.Controllers
     [ApiController]
     public class RegistroController : ControllerBase
     {
+        #region BDcontext
         public consultorioDBContext _context;
         public RegistroController(consultorioDBContext context)
         {
             _context = context;
         }
+        #endregion
 
         [HttpPost]
         [Route("/api/registro/usuario")]

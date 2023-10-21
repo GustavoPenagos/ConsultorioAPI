@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace ConsultorioAPI.Migrations
 {
     /// <inheritdoc />
-    public partial class Migrations : Migration
+    public partial class DAO : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -80,7 +80,7 @@ namespace ConsultorioAPI.Migrations
                     c18 = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     c21 = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     c22 = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    c23 = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    c23 = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     c24 = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     c25 = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     c26 = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -173,6 +173,23 @@ namespace ConsultorioAPI.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Contabilidad",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    IdUsuario = table.Column<long>(type: "bigint", nullable: false),
+                    Valor = table.Column<double>(type: "float", nullable: false),
+                    Abono = table.Column<double>(type: "float", nullable: false),
+                    Saldo = table.Column<double>(type: "float", nullable: false),
+                    FechaRegistro = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Contabilidad", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Convecciones",
                 columns: table => new
                 {
@@ -260,7 +277,7 @@ namespace ConsultorioAPI.Migrations
                 {
                     IdGenero = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Sexo = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Sexo = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -305,7 +322,7 @@ namespace ConsultorioAPI.Migrations
                 {
                     IdDocumento = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Documento = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Documento = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -362,6 +379,9 @@ namespace ConsultorioAPI.Migrations
 
             migrationBuilder.DropTable(
                 name: "Ciudad");
+
+            migrationBuilder.DropTable(
+                name: "Contabilidad");
 
             migrationBuilder.DropTable(
                 name: "Convecciones");

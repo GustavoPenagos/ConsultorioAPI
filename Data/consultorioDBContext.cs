@@ -25,6 +25,7 @@ namespace ConsultorioAPI.Data
         public DbSet<CartaDentalNino> cartaDentalNino{ get; set; }
         public DbSet<Citas> Citas { get; set; }
         public DbSet<Imagenes> Imagenes { get; set; }
+        public DbSet<Contabilidad> Contabilidad { get; set; }
 
     }
 }

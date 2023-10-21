@@ -141,7 +141,12 @@ namespace ConsultorioAPI.Controllers
                 return BadRequest(ex.Message);
             }
         }
-
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id">user id</param>
+        /// <returns></returns>
         [HttpGet]
         [Route("/api/buscar/citasxid")]
         public dynamic BusarCitas(long id=0)

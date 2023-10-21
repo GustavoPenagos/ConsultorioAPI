@@ -12,11 +12,13 @@ namespace ConsultorioAPI.Controllers
     [ApiController]
     public class ListaController : ControllerBase
     {
+        #region DBcontext
         public consultorioDBContext _context;
         public ListaController(consultorioDBContext context)
         {
             _context = context;
         }
+        #endregion
 
         [HttpGet]
         [Route("/api/lista/pacientes")]
@@ -170,7 +172,7 @@ namespace ConsultorioAPI.Controllers
 
             }catch (Exception ex)
             {
-                return BadRequest(ex.Message());
+                return BadRequest();
             }
 
         }

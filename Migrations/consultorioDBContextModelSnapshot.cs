@@ -439,7 +439,7 @@ namespace ConsultorioAPI.Migrations
                     b.Property<int>("EnferRespiratoria")
                         .HasColumnType("int");
 
-                    b.Property<int>("Fieb_Reumatica")
+                    b.Property<int>("FiebReumatica")
                         .HasColumnType("int");
 
                     b.Property<int>("FreCepillado")
@@ -574,7 +574,7 @@ namespace ConsultorioAPI.Migrations
                     b.Property<int>("Paladar")
                         .HasColumnType("int");
 
-                    b.Property<int>("Piso_Boca")
+                    b.Property<int>("PisoBoca")
                         .HasColumnType("int");
 
                     b.HasKey("Id");

@@ -21,7 +21,7 @@ namespace OdontologiaWeb.Models
         public int Hepatitis { get; set; }
         public int TransGastricos { get; set; }
         public int Cardiopatias { get; set; }
-        public int Fieb_Reumatica { get; set; }
+        public int FiebReumatica { get; set; }
         public int TrataMedico { get; set; }
         public int EnferRespiratoria { get; set; }
         public int Hipertension { get; set; }

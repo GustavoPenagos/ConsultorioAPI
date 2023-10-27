@@ -80,8 +80,8 @@ namespace ConsultorioAPI.Controllers
                                 Usuario.Apellido,
                                 Usuario.Edad,
                                 Genero = Genero.Sexo,
-                                citas = Citas.FechaCita.ToShortDateString(),
-                                hora = Citas.HoraCita
+                                citas = Citas.FechaCita.ToShortDateString() == null ? "Sin fecha" : Citas.FechaCita.ToShortDateString(),
+                                hora = Citas.HoraCita == null ? "Sin hora" : Citas.HoraCita
                             }).Where(i => i.IdUsuario == id).ToList();
                 }
                 
@@ -222,7 +222,7 @@ namespace ConsultorioAPI.Controllers
                         };
                         dynamicsDN.Add(camposNino);
                         return dynamicsDN.ToList();
-                    case (> 18):
+                    case (>= 18):
                         var dentalAdulto = _context.cartaDentalAdulto.Where(i => i.IdUsuario == id).FirstOrDefault();
                         List<dynamic> dynamicsDA = new List<dynamic>();
                         var camposAdult = new

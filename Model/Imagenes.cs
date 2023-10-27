@@ -9,6 +9,6 @@ namespace ConsultorioAPI.Model
         [Required]
         public int IdUsuario { get; set; }
         public string? Imagen { get; set;}
-        public DateTime? FechaCarga { get; set; }
+        public DateTime? FechaCarga { get; set; } = DateTime.Now;
     }
 }

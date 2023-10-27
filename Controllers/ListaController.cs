@@ -41,8 +41,8 @@ namespace ConsultorioAPI.Controllers
                                 Usuario.Apellido,
                                 Usuario.Edad,
                                 Genero = Genero.Sexo,
-                                citas = Citas.FechaCita.ToShortDateString(),
-                                hora = Citas.HoraCita
+                                citas = Citas.FechaCita.ToShortDateString() == null ? "Sin fecha" : Citas.FechaCita.ToShortDateString(),
+                                hora = Citas.HoraCita == null ? "Sin hora" : Citas.HoraCita
                             };
 
                 return usuario.ToList();
@@ -166,7 +166,29 @@ namespace ConsultorioAPI.Controllers
             {
                 if (id == 0)
                 {
-                    return _context.Imagenes.Select(i => i.Imagen).ToList();
+                    return from Imagenes in _context.Imagenes
+                           join Usuario in _context.Usuario on Imagenes.IdUsuario equals Usuario.IdUsuario
+                           orderby Imagenes.IdUsuario
+                           select new
+                           {
+                               id = Imagenes.IdUsuario,
+                               Usuario = Usuario.Nombre + " " + Usuario.Apellido,
+                               imagen = Imagenes.Imagen,
+                               fechaCarga = Imagenes.FechaCarga == null ? "Sin fecha de carga" : Imagenes.FechaCarga.ToString()
+                           };
+                }
+                else
+                {
+                    return from Imagenes in _context.Imagenes
+                              join Usuario in _context.Usuario on Imagenes.IdUsuario equals Usuario.IdUsuario
+                           where Imagenes.IdUsuario == id
+                              select new
+                              {
+                                  id = Imagenes.IdUsuario,
+                                  Usuario = Usuario.Nombre + " " + Usuario.Apellido,
+                                  imagen = Imagenes.Imagen,
+                                  fechaCarga = Imagenes.FechaCarga == null ? "Sin fecha de carga" : Imagenes.FechaCarga.ToString()
+                              };
                 }
                 return _context.Imagenes.Where(i => i.IdUsuario == id).Select(i => i.Imagen).ToList();
 

@@ -448,6 +448,9 @@ namespace ConsultorioAPI.Migrations
                     b.Property<int>("Hepatitis")
                         .HasColumnType("int");
 
+                    b.Property<int>("Epilepsia")
+                        .HasColumnType("int");
+
                     b.Property<int>("Hipertension")
                         .HasColumnType("int");
 

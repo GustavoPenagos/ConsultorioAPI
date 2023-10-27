@@ -40,6 +40,7 @@ namespace ConsultorioAPI.Migrations
                     Diabetes = table.Column<int>(type: "int", nullable: false),
                     Infecciones = table.Column<int>(type: "int", nullable: false),
                     Hepatitis = table.Column<int>(type: "int", nullable: false),
+                    Epilepsia = table.Column<int>(type: "int", nullable: false),
                     TransGastricos = table.Column<int>(type: "int", nullable: false),
                     Cardiopatias = table.Column<int>(type: "int", nullable: false),
                     FiebReumatica = table.Column<int>(type: "int", nullable: false),

@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ConsultorioAPI.Migrations
 {
     [DbContext(typeof(consultorioDBContext))]
-    [Migration("20231021034021_DAO")]
-    partial class DAO
+    [Migration("20231112225043_Migrations")]
+    partial class Migrations
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -442,7 +442,10 @@ namespace ConsultorioAPI.Migrations
                     b.Property<int>("EnferRespiratoria")
                         .HasColumnType("int");
 
-                    b.Property<int>("Fieb_Reumatica")
+                    b.Property<int>("Epilepsia")
+                        .HasColumnType("int");
+
+                    b.Property<int>("FiebReumatica")
                         .HasColumnType("int");
 
                     b.Property<int>("FreCepillado")
@@ -497,13 +500,16 @@ namespace ConsultorioAPI.Migrations
 
             modelBuilder.Entity("OdontologiaWeb.Models.Ciudad", b =>
                 {
-                    b.Property<int>("IdCiudad")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdCiudad"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int>("Estado")
+                        .HasColumnType("int");
+
+                    b.Property<int>("IdCiudad")
                         .HasColumnType("int");
 
                     b.Property<int>("IdDepartamento")
@@ -512,23 +518,26 @@ namespace ConsultorioAPI.Migrations
                     b.Property<string>("Municipio")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("IdCiudad");
+                    b.HasKey("Id");
 
                     b.ToTable("Ciudad");
                 });
 
             modelBuilder.Entity("OdontologiaWeb.Models.Departamento", b =>
                 {
-                    b.Property<int>("IdDepartamento")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdDepartamento"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("IdDepartamento")
+                        .HasColumnType("int");
 
                     b.Property<string>("NombreDepartamento")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("IdDepartamento");
+                    b.HasKey("Id");
 
                     b.ToTable("Departamento");
                 });
@@ -577,7 +586,7 @@ namespace ConsultorioAPI.Migrations
                     b.Property<int>("Paladar")
                         .HasColumnType("int");
 
-                    b.Property<int>("Piso_Boca")
+                    b.Property<int>("PisoBoca")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -619,11 +628,11 @@ namespace ConsultorioAPI.Migrations
 
             modelBuilder.Entity("OdontologiaWeb.Models.Usuario", b =>
                 {
-                    b.Property<long>("IdUsuario")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
+                        .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("IdUsuario"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Apellido")
                         .HasColumnType("nvarchar(max)");
@@ -658,6 +667,9 @@ namespace ConsultorioAPI.Migrations
                     b.Property<int>("IdGenero")
                         .HasColumnType("int");
 
+                    b.Property<long>("IdUsuario")
+                        .HasColumnType("bigint");
+
                     b.Property<string>("Nombre")
                         .HasColumnType("nvarchar(max)");
 
@@ -679,7 +691,7 @@ namespace ConsultorioAPI.Migrations
                     b.Property<string>("Telefono")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("IdUsuario");
+                    b.HasKey("Id");
 
                     b.ToTable("Usuario");
                 });

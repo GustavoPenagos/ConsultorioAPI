@@ -5,6 +5,7 @@ using OdontologiaWeb.Models;
 
 namespace ConsultorioAPI.Controllers
 {
+    [ApiController]
     public class CrudController : ControllerBase
     {
         public consultorioDBContext _context;
@@ -103,6 +104,26 @@ namespace ConsultorioAPI.Controllers
             }catch(Exception ex)
             {
                 return BadRequest(ex.Message);
+            }
+        }
+
+
+        [HttpDelete]
+        [Route("/api/eliminar/foto")]
+        public dynamic EliminarFoto(long id, string name)
+        {
+            try
+            {
+                var foto = _context.Imagenes.Where(x => x.IdUsuario == id &&  x.Imagen == name).FirstOrDefault();
+                if (foto != null)
+                {
+                    _context.Imagenes.RemoveRange(foto);
+                    _context.SaveChanges();
+                }
+                return Ok();
+            }catch(Exception ex)
+            {
+                return BadRequest();
             }
         }
 

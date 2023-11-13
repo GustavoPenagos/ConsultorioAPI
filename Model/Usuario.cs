@@ -10,6 +10,7 @@ namespace OdontologiaWeb.Models
     public class Usuario
     {
         [Key]
+        public int Id { get; set; }
         public long IdUsuario { get; set; }
         public int IdDocumento { get; set; }
         public string? Nombre { get; set; }

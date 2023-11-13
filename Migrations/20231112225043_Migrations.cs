@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace ConsultorioAPI.Migrations
 {
     /// <inheritdoc />
-    public partial class DAO : Migration
+    public partial class Migrations : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -163,6 +163,8 @@ namespace ConsultorioAPI.Migrations
                 name: "Ciudad",
                 columns: table => new
                 {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     IdCiudad = table.Column<int>(type: "int", nullable: false),
                     Municipio = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Estado = table.Column<int>(type: "int", nullable: false),
@@ -170,7 +172,7 @@ namespace ConsultorioAPI.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Ciudad", x => x.IdCiudad);
+                    table.PrimaryKey("PK_Ciudad", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -207,12 +209,14 @@ namespace ConsultorioAPI.Migrations
                 name: "Departamento",
                 columns: table => new
                 {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     IdDepartamento = table.Column<int>(type: "int", nullable: false),
                     NombreDepartamento = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Departamento", x => x.IdDepartamento);
+                    table.PrimaryKey("PK_Departamento", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -334,6 +338,8 @@ namespace ConsultorioAPI.Migrations
                 name: "Usuario",
                 columns: table => new
                 {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     IdUsuario = table.Column<long>(type: "bigint", nullable: false),
                     IdDocumento = table.Column<int>(type: "int", nullable: false),
                     Nombre = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -356,7 +362,7 @@ namespace ConsultorioAPI.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Usuario", x => x.IdUsuario);
+                    table.PrimaryKey("PK_Usuario", x => x.Id);
                 });
         }
 

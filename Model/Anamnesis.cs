@@ -13,9 +13,9 @@ namespace OdontologiaWeb.Models
         [Key]
         public int Id { get; set; }
         [Required]
-        public long Id_Usuario { get; set; }
-        public string? Motivo_Consulta { get; set; }
-        public string? Emf_Actual { get; set; }
-        public DateTime Atencion { get; set; }
-    }
+        public long IdUsuario { get; set; }
+        public string MotivoConsulta { get; set; }
+        public string EmferActual { get; set; }
+        public DateTime Atencion { get; set; } = DateTime.Now;
+        }
 }

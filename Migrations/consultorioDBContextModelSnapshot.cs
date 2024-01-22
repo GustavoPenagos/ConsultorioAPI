@@ -382,6 +382,79 @@ namespace ConsultorioAPI.Migrations
                     b.ToTable("PlanTratamiento");
                 });
 
+            modelBuilder.Entity("ConsultorioAPI.Model.Urgencia", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Ant_General")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Apellido")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Autorizacion")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Diagnostico")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Direccion")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Edad")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Enf_Actual")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("FechaNacido")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("Fecha_URG")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("IdCiudad")
+                        .HasColumnType("int");
+
+                    b.Property<string>("IdDocumento")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("IdGenero")
+                        .HasColumnType("int");
+
+                    b.Property<string>("IdUsuario")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Medicamento")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Motivo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Nombre")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NombreAcudiente")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Rem_Especialista")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Telefono")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Trata_ejectado")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Urgencias");
+                });
+
             modelBuilder.Entity("OdontologiaWeb.Models.Anamnesis", b =>
                 {
                     b.Property<int>("Id")

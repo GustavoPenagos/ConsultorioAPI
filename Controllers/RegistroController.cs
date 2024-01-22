@@ -204,5 +204,21 @@ namespace ConsultorioAPI.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
+        [HttpPost]
+        [Route("/api/registro/urgencia")]
+        public dynamic RegistroUrgencia(Urgencia urgencia)
+        {
+            try
+            {
+
+                _context.Urgencias.Add(urgencia);
+                _context.SaveChanges();
+                return Ok();
+            }catch(Exception ex) 
+            { 
+                return BadRequest(ex.Message);
+            }
+        }
     }
 }

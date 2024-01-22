@@ -335,6 +335,38 @@ namespace ConsultorioAPI.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Urgencias",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Fecha_URG = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Nombre = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Apellido = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    IdDocumento = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    IdUsuario = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    FechaNacido = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Edad = table.Column<int>(type: "int", nullable: false),
+                    IdCiudad = table.Column<int>(type: "int", nullable: false),
+                    IdGenero = table.Column<int>(type: "int", nullable: false),
+                    Direccion = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Telefono = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    NombreAcudiente = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Motivo = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Diagnostico = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Enf_Actual = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Ant_General = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Medicamento = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Trata_ejectado = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Rem_Especialista = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Autorizacion = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Urgencias", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Usuario",
                 columns: table => new
                 {
@@ -416,6 +448,9 @@ namespace ConsultorioAPI.Migrations
 
             migrationBuilder.DropTable(
                 name: "TipoDocumento");
+
+            migrationBuilder.DropTable(
+                name: "Urgencias");
 
             migrationBuilder.DropTable(
                 name: "Usuario");

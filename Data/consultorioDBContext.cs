@@ -26,6 +26,7 @@ namespace ConsultorioAPI.Data
         public DbSet<Citas> Citas { get; set; }
         public DbSet<Imagenes> Imagenes { get; set; }
         public DbSet<Contabilidad> Contabilidad { get; set; }
+        public DbSet<Urgencia> Urgencias { get; set; }
 
     }
 }

@@ -6,12 +6,12 @@ namespace ConsultorioAPI.Model
     public class EstadoTratamiento
     {
         [Key]
-        public int Id { get; set; }
+        public int ID { get; set; }
         [Required]
-        public long IdUsuario { get; set; }
+        public long ID_Usuario { get; set; }
         public DateTime Fecha { get; set; }
         public string? Diente { get; set; }
-        public string? TrataEfectuado { get; set;}
+        public string? Tratamiento_Efectuado { get; set;}
         public string? Doctor { get; set;}
         public string? Firma { get; set;}
         public DateTime Atencion { get; set; } = DateTime.Now;

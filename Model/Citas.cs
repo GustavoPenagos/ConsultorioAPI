@@ -5,11 +5,11 @@ namespace ConsultorioAPI.Model
     public class Citas
     {
         [Key]
-        public int Id { get; set; }
+        public int ID { get; set; }
         [Required]
-        public long IdUsuario { get; set; }
-        public DateTime  FechaCita{ get; set; }
-        public string? HoraCita { get; set; }
+        public long ID_Usuario { get; set; }
+        public DateTime  Fecha_Cita{ get; set; }
+        public string? Hora_Cita { get; set; }
 
     }
 }

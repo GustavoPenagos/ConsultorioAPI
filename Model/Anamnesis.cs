@@ -11,11 +11,11 @@ namespace OdontologiaWeb.Models
     public class Anamnesis
     {
         [Key]
-        public int Id { get; set; }
+        public int ID { get; set; }
         [Required]
-        public long IdUsuario { get; set; }
-        public string MotivoConsulta { get; set; }
-        public string EmferActual { get; set; }
+        public long ID_Usuario { get; set; }
+        public string? Motivo_Consulta { get; set; }
+        public string? Emfermedad_Actual { get; set; }
         public DateTime Atencion { get; set; } = DateTime.Now;
         }
 }

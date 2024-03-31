@@ -9,7 +9,7 @@ namespace OdontologiaWeb.Models
     public class TipoDocumento
     {
         [Key]
-        public  int IdDocumento { get; set; }
-        public string Documento { get; set; }
+        public  int ID_Documento { get; set; }
+        public string? Documento { get; set; }
     }
 }

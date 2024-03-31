@@ -25,22 +25,22 @@ namespace ConsultorioAPI.Controllers
             try
             {
                  var usuario = from Usuario in _context.Usuario
-                            join TipoDocumento in _context.TipoDocumento on Usuario.Id_Documento equals TipoDocumento.Id_Documento
-                            join EstadoCivil in _context.EstadoCivil on Usuario.Estado_Civil equals EstadoCivil.Id
-                            join Genero in _context.Genero on Usuario.Id_Genero equals Genero.Id_Genero
-                            join Ciudad in _context.Ciudad on Usuario.Id_Ciudad equals Ciudad.Id_Ciudad
-                            join Citas in _context.Citas on Usuario.Id_Usuario equals Citas.Id_Usuario into leftJoin
+                            join TipoDocumento in _context.TipoDocumento on Usuario.ID_Documento equals TipoDocumento.ID_Documento
+                            join EstadoCivil in _context.EstadoCivil on Usuario.Estado_Civil equals EstadoCivil.ID
+                            join Genero in _context.Genero on Usuario.ID_Genero equals Genero.ID_Genero
+                            join Ciudad in _context.Ciudad on Usuario.ID_Ciudad equals Ciudad.ID_Ciudad
+                            join Citas in _context.Citas on Usuario.ID_Usuario equals Citas.ID_Usuario into leftJoin
                             from Citas in leftJoin.DefaultIfEmpty()
                             select new
                             {
-                                Usuario.Id_Usuario,
+                                Usuario.ID_Usuario,
                                 tipodocumento = TipoDocumento.Documento,
                                 Usuario.Nombre,
                                 Usuario.Apellido,
                                 Usuario.Edad,
                                 Genero = Genero.Sexo,
-                                citas = Citas.FechaCita.ToShortDateString(),
-                                hora = Citas.HoraCita
+                                citas = Citas.Fecha_Cita.ToShortDateString(),
+                                hora = Citas.Hora_Cita
                             };
 
                 return usuario.ToList();
@@ -166,11 +166,11 @@ namespace ConsultorioAPI.Controllers
                 {
                     return _context.Imagenes.Select(i => i.Imagen).ToList();
                 }
-                return _context.Imagenes.Where(i => i.Id_Usuario == id).Select(i => i.Imagen).ToList();
+                return _context.Imagenes.Where(i => i.ID_Usuario == id).Select(i => i.Imagen).ToList();
 
             }catch (Exception ex)
             {
-                return BadRequest();
+                return BadRequest(ex.Message);
             }
 
         }

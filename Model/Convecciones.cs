@@ -5,7 +5,7 @@ namespace ConsultorioAPI.Model
     public class Convecciones
     {
         [Key]
-        public int Id { get; set; }
+        public int ID { get; set; }
         public string? Conveccion { get; set; }
     }
 }

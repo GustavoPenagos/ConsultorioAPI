@@ -10,12 +10,12 @@ namespace OdontologiaWeb.Models
     public class Ant_Familiar
     {
         [Key]
-        public int Id { get; set; }
+        public int ID { get; set; }
         [Required]
-        public long IdUsuario { get; set; }
+        public long ID_Usuario { get; set; }
         public int Cancer { get; set; }
         public int Sinusitis { get; set; }
-        public int OrganosSentidos { get; set; }
+        public int Organos_Sentidos { get; set; }
         public int Diabetes { get; set; }
         public int Infecciones { get; set; }
         public int Hepatitis { get; set; }
@@ -24,18 +24,18 @@ namespace OdontologiaWeb.Models
         public int Cardiopatias { get; set; }
         public int FiebReumatica { get; set; }
         public int TrataMedico { get; set; }
-        public int EnferRespiratoria { get; set; }
+        public int Enfermedad_Respiratoria { get; set; }
         public int Hipertension { get; set; }
         public int AltCoagulatorias { get; set; }
-        public int TransNeumologico { get; set; }
-        public int TenArterial { get; set; }
-        public string Otros { get; set; }
+        public int Transtorno_Neumologico { get; set; }
+        public int Ten_Arterial { get; set; }
+        public string? Otros { get; set; }
         public int Embarazo { get; set; }
         public int Meses { get; set; }
         public int Lactancia { get; set; }
-        public int FreCepillado { get; set; }
+        public int Frecuencia_Cepillado { get; set; }
         public int CedaDental { get; set; }
-        public string Observaciones { get; set; }
+        public string? Observaciones { get; set; }
         public DateTime Atencion { get; set; } = DateTime.Now;
     }
 }

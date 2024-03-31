@@ -2,7 +2,7 @@
 {
     public class EstadoCivil
     {
-        public int Id { get; set; }
+        public int ID { get; set; }
         public string? CivilNo { get; set; }
     }
 }

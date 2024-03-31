@@ -173,11 +173,11 @@ namespace ConsultorioAPI.Controllers
         {
             try
             {
-                var persona = _context.Citas.Where(x => x.Id_Usuario == citas.Id_Usuario).FirstOrDefault();
+                var persona = _context.Citas.Where(x => x.ID_Usuario == citas.ID_Usuario).FirstOrDefault();
                 if (persona != null)
                 {
-                    persona.FechaCita = citas.FechaCita;
-                    persona.HoraCita = citas.HoraCita;
+                    persona.Fecha_Cita = citas.Fecha_Cita;
+                    persona.Hora_Cita = citas.Hora_Cita;
                     _context.SaveChanges();
                     return Ok();
                 }
@@ -185,9 +185,9 @@ namespace ConsultorioAPI.Controllers
                 {
                     Citas cita = new Citas
                     {
-                        Id_Usuario = citas.Id_Usuario,
-                        FechaCita = citas.FechaCita,
-                        HoraCita = citas.HoraCita
+                        ID_Usuario = citas.ID_Usuario,
+                        Fecha_Cita = citas.Fecha_Cita,
+                        Hora_Cita = citas.Hora_Cita
                     };
 
                     _context.Citas.Update(cita);

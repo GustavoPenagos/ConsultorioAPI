@@ -6,9 +6,9 @@ namespace ConsultorioAPI.Model
     public class PlanTratamiento
     {
         [Key]
-        public int Id { get; set; }
+        public int ID { get; set; }
         [Required]
-        public long IdUsuario { get; set; }
+        public long ID_Usuario { get; set; }
         public string? Diagnostico {get; set; }
         public string? Pronostico { get; set; }
         public string? Tratamiento{ get; set; }

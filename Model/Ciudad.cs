@@ -11,10 +11,10 @@ namespace OdontologiaWeb.Models
     public class Ciudad
     {
         [Key]
-        public int Id { get; set; }
-        public int IdCiudad { get; set; }
+        public int ID { get; set; }
+        public int ID_Ciudad { get; set; }
         public string? Municipio { get; set; }
         public int Estado { get; set; }
-        public int IdDepartamento { get; set; }
+        public int ID_Departamento { get; set; }
     }
 }

@@ -9,8 +9,8 @@ namespace OdontologiaWeb.Models
     public class Departamento
     {
         [Key]
-        public int Id { get; set; }
-        public int IdDepartamento { get; set; }
-        public string? NombreDepartamento { get; set; }
+        public int ID { get; set; }
+        public int ID_Departamento { get; set; }
+        public string? Nombre_Departamento { get; set; }
     }
 }

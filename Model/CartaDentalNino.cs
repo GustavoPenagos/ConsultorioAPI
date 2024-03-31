@@ -6,9 +6,9 @@ namespace ConsultorioAPI.Model
     public class CartaDentalNino
     {
         [Key]
-        public int Id { get; set; }
+        public int ID { get; set; }
         [Required]
-        public long IdUsuario { get; set; }
+        public long ID_Usuario { get; set; }
         public string? c51 { get; set; }
         public string? c52 { get; set; }
         public string? c53 { get; set; }

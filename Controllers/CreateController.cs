@@ -1,34 +1,25 @@
-﻿using ConsultorioAPI.Data;
-using ConsultorioAPI.Model;
-using Microsoft.AspNetCore.Http;
+﻿using Data.Context;
+using Data.Model;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Data.SqlClient;
-using Microsoft.EntityFrameworkCore.ChangeTracking;
-using Microsoft.EntityFrameworkCore.Migrations.Operations;
-using OdontologiaWeb.Models;
-using System.Diagnostics.Tracing;
-using ConsultorioAPI.Controllers;
-using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices.ObjectiveC;
 
 namespace ConsultorioAPI.Controllers
 {
     [ApiController]
-    public class RegistroController : ControllerBase
+    public class CreateController : ControllerBase
     {
-        public consultorioDBContext _context;
-        public RegistroController(consultorioDBContext context)
+        public OdontologiaContext _context;
+        public CreateController(OdontologiaContext context)
         {
             _context = context;
         }
 
         [HttpPost]
         [Route("/api/registro/usuario")]
-        public dynamic RegistroUsuario(Usuario usuario)
+        public IActionResult RegistroUsuario(Usuario usuario)
         {
             try
             {
-                usuario.Atencion = DateTime.Now;
-
                 _context.Usuario.Add(usuario);
                 _context.SaveChanges();
                 return Ok();
@@ -42,12 +33,10 @@ namespace ConsultorioAPI.Controllers
 
         [HttpPost]
         [Route("/api/registro/anamnesis")]
-        public dynamic RegistroAnamnesis(Anamnesis anamnesis)
+        public IActionResult RegistroAnamnesis(Anamnesis anamnesis)
         {
             try
             {
-                anamnesis.Atencion = DateTime.Now;
-
                 _context.Anamnesis.Add(anamnesis);
                 _context.SaveChanges();
                 return Ok();
@@ -60,12 +49,10 @@ namespace ConsultorioAPI.Controllers
 
         [HttpPost]
         [Route("/api/registro/familiar")]
-        public dynamic RegistroFamiliar(Ant_Familiar familiar)
+        public IActionResult RegistroFamiliar(Ant_Familiar familiar)
         {
             try
             {
-                familiar.Atencion= DateTime.Now;
-
                 _context.Ant_Familiar.Add(familiar);
                 _context.SaveChanges();
                 return Ok();
@@ -79,12 +66,10 @@ namespace ConsultorioAPI.Controllers
 
         [HttpPost]
         [Route("/api/registro/estomatologico")]
-        public dynamic RegistroEstomatologico(Estomatologico estomatologico)
+        public IActionResult RegistroEstomatologico(Estomatologico estomatologico)
         {
             try
             {
-                estomatologico.Atencion = DateTime.Now;
-
                 _context.Estomatologico.Add(estomatologico);
                 _context.SaveChanges();
                 return Ok();
@@ -97,12 +82,11 @@ namespace ConsultorioAPI.Controllers
 
         [HttpPost]
         [Route("/api/registro/plantratamiento")]
-        public dynamic RegistroTratamiento(PlanTratamiento tratamiento)
+        public IActionResult RegistroTratamiento(PlanTratamiento tratamiento)
         {
             try
             {
-                var insert = tratamiento;
-                _context.PlanTratamiento.Add(insert);
+                _context.PlanTratamiento.Add(tratamiento);
                 _context.SaveChanges();
                 return Ok();
 
@@ -115,12 +99,11 @@ namespace ConsultorioAPI.Controllers
 
         [HttpPost]
         [Route("/api/registro/estadotratamiento")]
-        public dynamic RegistroEstadoTratamiento(EstadoTratamiento estado)
+        public IActionResult RegistroEstadoTratamiento(EstadoTratamiento estado)
         {
             try
             {
-                var insert = estado;
-                _context.EstadoTratamiento.Add(insert);
+                _context.EstadoTratamiento.Add(estado);
                 _context.SaveChanges();
 
                 return Ok();
@@ -133,12 +116,10 @@ namespace ConsultorioAPI.Controllers
 
         [HttpPost]
         [Route("/api/registro/dentaladulto")]
-        public dynamic RegistroCartaDentalAdulto(CartaDentalAdulto dentalAdulto)
+        public IActionResult RegistroCartaDentalAdulto(CartaDentalAdulto dentalAdulto)
         {
             try
             {
-                dentalAdulto.Atencion = DateTime.Now;
-
                 _context.cartaDentalAdulto.Add(dentalAdulto);
                 _context.SaveChanges();
                 return Ok();
@@ -151,12 +132,10 @@ namespace ConsultorioAPI.Controllers
 
         [HttpPost]
         [Route("/api/registro/dentalnino")]
-        public dynamic RegistroCartaDentalNino(CartaDentalNino dentalNino)
+        public IActionResult RegistroCartaDentalNino(CartaDentalNino dentalNino)
         {
             try
             {
-                dentalNino.Atencion = DateTime.Now;
-
                 _context.cartaDentalNino.Add(dentalNino);
                 _context.SaveChanges();
                 return Ok();
@@ -169,11 +148,11 @@ namespace ConsultorioAPI.Controllers
 
         [HttpPost]
         [Route("/api/registro/citas")]
-        public dynamic RegistroCitas(Citas citas)
+        public IActionResult RegistroCitas(Citas citas)
         {
             try
             {
-                var persona = _context.Citas.Where(x => x.ID_Usuario == citas.ID_Usuario).FirstOrDefault();
+                var persona = _context.Citas.FirstOrDefault(x => x.Id_Usuario == citas.Id_Usuario);
                 if (persona != null)
                 {
                     persona.Fecha_Cita = citas.Fecha_Cita;
@@ -183,14 +162,7 @@ namespace ConsultorioAPI.Controllers
                 }
                 else
                 {
-                    Citas cita = new Citas
-                    {
-                        ID_Usuario = citas.ID_Usuario,
-                        Fecha_Cita = citas.Fecha_Cita,
-                        Hora_Cita = citas.Hora_Cita
-                    };
-
-                    _context.Citas.Update(cita);
+                    _context.Citas.Update(citas);
                     _context.SaveChanges();
                     return Ok();
                 }
@@ -203,7 +175,7 @@ namespace ConsultorioAPI.Controllers
 
         [HttpPost]
         [Route("/api/registro/imagen")]
-        public dynamic RegistroImagen(Imagenes imagenes)
+        public IActionResult RegistroImagen(Imagenes imagenes)
         {
             try
             {

@@ -1,19 +1,14 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Data;
-using Microsoft.Data.SqlClient;
-using Newtonsoft.Json;
-using ConsultorioAPI.Data;
-using OdontologiaWeb.Models;
-using Microsoft.EntityFrameworkCore;
-using ConsultorioAPI.Model;
+using Data.Context;
 
 namespace ConsultorioAPI.Controllers
 {    
     [ApiController]
-    public class ListaController : ControllerBase
+    public class ListController : Controller
     {
-        public consultorioDBContext _context;
-        public ListaController(consultorioDBContext context)
+        public OdontologiaContext _context;
+        public ListController(OdontologiaContext context)
         {
             _context = context;
         }
@@ -24,16 +19,16 @@ namespace ConsultorioAPI.Controllers
         {
             try
             {
-                 var usuario = from Usuario in _context.Usuario
-                            join TipoDocumento in _context.TipoDocumento on Usuario.ID_Documento equals TipoDocumento.ID_Documento
-                            join EstadoCivil in _context.EstadoCivil on Usuario.Estado_Civil equals EstadoCivil.ID
-                            join Genero in _context.Genero on Usuario.ID_Genero equals Genero.ID_Genero
-                            join Ciudad in _context.Ciudad on Usuario.ID_Ciudad equals Ciudad.ID_Ciudad
-                            join Citas in _context.Citas on Usuario.ID_Usuario equals Citas.ID_Usuario into leftJoin
+                 return (from Usuario in _context.Usuario
+                            join TipoDocumento in _context.TipoDocumento on Usuario.Id_Documento equals TipoDocumento.Id_Documento
+                            join EstadoCivil in _context.EstadoCivil on Usuario.Estado_Civil equals EstadoCivil.Id
+                            join Genero in _context.Genero on Usuario.Id_Genero equals Genero.Id_Genero
+                            join Ciudad in _context.Ciudad on Usuario.Id_Ciudad equals Ciudad.Id_Ciudad
+                            join Citas in _context.Citas on Usuario.Id_Usuario equals Citas.Id_Usuario into leftJoin
                             from Citas in leftJoin.DefaultIfEmpty()
                             select new
                             {
-                                Usuario.ID_Usuario,
+                                Usuario.Id_Usuario,
                                 tipodocumento = TipoDocumento.Documento,
                                 Usuario.Nombre,
                                 Usuario.Apellido,
@@ -41,9 +36,8 @@ namespace ConsultorioAPI.Controllers
                                 Genero = Genero.Sexo,
                                 citas = Citas.Fecha_Cita.ToShortDateString(),
                                 hora = Citas.Hora_Cita
-                            };
+                            });
 
-                return usuario.ToList();
             }
             catch (Exception ex)
             {
@@ -57,7 +51,7 @@ namespace ConsultorioAPI.Controllers
         {
             try
             {
-                return _context.Convecciones.ToList();
+                return _context.Convecciones;
             }
             catch (Exception ex)
             {
@@ -72,7 +66,7 @@ namespace ConsultorioAPI.Controllers
 
             try
             {
-                return _context.EstadoCivil.ToList();
+                return _context.EstadoCivil;
             }
             catch (Exception ex)
             {
@@ -87,7 +81,7 @@ namespace ConsultorioAPI.Controllers
 
             try
             {
-                return _context.TipoDocumento.ToList();
+                return _context.TipoDocumento;
             }
             catch (Exception ex)
             {
@@ -102,7 +96,7 @@ namespace ConsultorioAPI.Controllers
 
             try
             {
-                return _context.Ciudad.ToList();
+                return _context.Ciudad;
             }
             catch (Exception ex)
             {
@@ -118,7 +112,7 @@ namespace ConsultorioAPI.Controllers
             try
             {
 
-                return _context.Departamento.ToList();
+                return _context.Departamento;
             }
             catch (Exception ex)
             {
@@ -133,7 +127,7 @@ namespace ConsultorioAPI.Controllers
 
             try
             {
-                return _context.Genero.ToList();
+                return _context.Genero;
             }
             catch (Exception ex)
             {
@@ -148,7 +142,7 @@ namespace ConsultorioAPI.Controllers
 
             try
             {
-                return _context.EstadoTratamiento.ToList();
+                return _context.EstadoTratamiento;
             }
             catch (Exception ex)
             {
@@ -164,15 +158,17 @@ namespace ConsultorioAPI.Controllers
             {
                 if (id == 0)
                 {
-                    return _context.Imagenes.Select(i => i.Imagen).ToList();
+                    return _context.Imagenes.Select(i => i.Imagen);
+                }else
+                {
+                    return _context.Imagenes.FirstOrDefault(i => i.Id_Usuario == id).Imagen;
                 }
-                return _context.Imagenes.Where(i => i.ID_Usuario == id).Select(i => i.Imagen).ToList();
+
 
             }catch (Exception ex)
             {
                 return BadRequest(ex.Message);
             }
-
         }
 
 
